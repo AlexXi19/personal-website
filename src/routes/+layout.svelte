@@ -59,6 +59,6 @@
 		</ul>
 	</div>
 </Transition>
-<div class="mx-auto p-24 text-sm md:text-lg">
+<div class="mx-auto p-12 pt-24 md:p-24 text-sm md:text-lg">
 	<slot />
 </div>
