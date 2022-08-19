@@ -8,7 +8,7 @@
 	let currentTrack = data.currentTrack;
 </script>
 
-<div class="font-mono flex flex-col gap-2">
+<div class="max-w-4xl font-mono flex flex-col gap-2">
 	<h1 class="font-semibold">Alex's personal Website</h1>
 	{#if message}
 		<p>{message}</p>
