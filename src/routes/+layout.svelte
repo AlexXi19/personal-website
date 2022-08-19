@@ -30,7 +30,7 @@
 			<li class="relative">
 				<a
 					sveltekit:prefetch
-					class="flex items-center font-bold text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out"
+					class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out"
 					href="/"
 					data-mdb-ripple="true"
 					data-mdb-ripple-color="dark"
@@ -38,7 +38,7 @@
 					Home
 				</a>
 			</li>
-			<li class="relative">
+			<!-- <li class="relative">
 				<a
 					sveltekit:prefetch
 					class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out"
@@ -46,19 +46,19 @@
 					data-mdb-ripple="true"
 					data-mdb-ripple-color="dark">Spotify</a
 				>
-			</li>
+			</li> -->
 			<li class="relative">
 				<a
 					sveltekit:prefetch
 					class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out"
-					href="#!"
+					href="/recs"
 					data-mdb-ripple="true"
-					data-mdb-ripple-color="dark">Stuff 2</a
+					data-mdb-ripple-color="dark">Recs</a
 				>
 			</li>
 		</ul>
 	</div>
 </Transition>
-<div class="max-w-4xl mx-auto p-24">
+<div class="max-w-4xl mx-auto p-24 text-sm md:text-lg">
 	<slot />
 </div>

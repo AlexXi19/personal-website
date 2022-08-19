@@ -109,7 +109,6 @@ export interface paths {
     get: {
       parameters: {
         query: {
-          id?: parameters["rowFilter.tokens.id"];
           created_at?: parameters["rowFilter.tokens.created_at"];
           access_token?: parameters["rowFilter.tokens.access_token"];
           refresh_token?: parameters["rowFilter.tokens.refresh_token"];
@@ -163,7 +162,6 @@ export interface paths {
     delete: {
       parameters: {
         query: {
-          id?: parameters["rowFilter.tokens.id"];
           created_at?: parameters["rowFilter.tokens.created_at"];
           access_token?: parameters["rowFilter.tokens.access_token"];
           refresh_token?: parameters["rowFilter.tokens.refresh_token"];
@@ -181,7 +179,6 @@ export interface paths {
     patch: {
       parameters: {
         query: {
-          id?: parameters["rowFilter.tokens.id"];
           created_at?: parameters["rowFilter.tokens.created_at"];
           access_token?: parameters["rowFilter.tokens.access_token"];
           refresh_token?: parameters["rowFilter.tokens.refresh_token"];
@@ -189,6 +186,105 @@ export interface paths {
         body: {
           /** tokens */
           tokens?: definitions["tokens"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
+  "/recs": {
+    get: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.recs.id"];
+          created_at?: parameters["rowFilter.recs.created_at"];
+          title?: parameters["rowFilter.recs.title"];
+          href?: parameters["rowFilter.recs.href"];
+          type?: parameters["rowFilter.recs.type"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["recs"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** recs */
+          recs?: definitions["recs"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.recs.id"];
+          created_at?: parameters["rowFilter.recs.created_at"];
+          title?: parameters["rowFilter.recs.title"];
+          href?: parameters["rowFilter.recs.href"];
+          type?: parameters["rowFilter.recs.type"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.recs.id"];
+          created_at?: parameters["rowFilter.recs.created_at"];
+          title?: parameters["rowFilter.recs.title"];
+          href?: parameters["rowFilter.recs.href"];
+          type?: parameters["rowFilter.recs.type"];
+        };
+        body: {
+          /** recs */
+          recs?: definitions["recs"];
         };
         header: {
           /** Preference */
@@ -222,9 +318,26 @@ export interface definitions {
   };
   tokens: {
     /**
+     * Format: timestamp with time zone
+     * @default now()
+     */
+    created_at?: string;
+    /** Format: text */
+    access_token: string;
+    /**
+     * Format: text
+     * @description Note:
+     * This is a Primary Key.<pk/>
+     * @default extensions.uuid_generate_v4()
+     */
+    refresh_token: string;
+  };
+  recs: {
+    /**
      * Format: uuid
      * @description Note:
      * This is a Primary Key.<pk/>
+     * @default extensions.uuid_generate_v4()
      */
     id: string;
     /**
@@ -233,9 +346,11 @@ export interface definitions {
      */
     created_at?: string;
     /** Format: text */
-    access_token: string;
+    title: string;
     /** Format: text */
-    refresh_token: string;
+    href: string;
+    /** Format: text */
+    type?: string;
   };
 }
 
@@ -282,14 +397,24 @@ export interface parameters {
   "rowFilter.messages.text": string;
   /** @description tokens */
   "body.tokens": definitions["tokens"];
-  /** Format: uuid */
-  "rowFilter.tokens.id": string;
   /** Format: timestamp with time zone */
   "rowFilter.tokens.created_at": string;
   /** Format: text */
   "rowFilter.tokens.access_token": string;
   /** Format: text */
   "rowFilter.tokens.refresh_token": string;
+  /** @description recs */
+  "body.recs": definitions["recs"];
+  /** Format: uuid */
+  "rowFilter.recs.id": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.recs.created_at": string;
+  /** Format: text */
+  "rowFilter.recs.title": string;
+  /** Format: text */
+  "rowFilter.recs.href": string;
+  /** Format: text */
+  "rowFilter.recs.type": string;
 }
 
 export interface operations {}

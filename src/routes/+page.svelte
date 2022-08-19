@@ -8,13 +8,16 @@
 	let currentTrack = data.currentTrack;
 </script>
 
-<div class="font-mono text-lg ">
+<div class="font-mono flex flex-col gap-2">
 	<h1 class="font-semibold">Alex's personal Website</h1>
 	{#if message}
 		<p>{message}</p>
 	{/if}
 	{#if currentTrack}
-		<p>Currently listening to: {currentTrack?.item?.name} - {currentTrack.item?.artists[0].name}</p>
+		Currently listening to:
+		<a class="text-blue-400" href={String(currentTrack.item?.external_urls.spotify)} target="_blank"
+			>{currentTrack?.item?.name} - {currentTrack.item?.artists[0].name}</a
+		>
 	{/if}
 	<h2 class="flex flex-row">
 		Connect with me on:
