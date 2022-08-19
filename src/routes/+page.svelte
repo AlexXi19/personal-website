@@ -1,15 +1,23 @@
 <script lang="ts">
 	import svelteLogo from '$lib/assets/svelte-logo.svg';
 	import supabaseLogo from '$lib/assets/supabase-logo-wordmark--light.png';
-	export let data;
+	import type { ILoadPageData } from './+page.server';
+
+	export let data: ILoadPageData;
 	let message = data.message;
+	let authorizeURL = data.authUrl;
+	let currentTrack = data.currentTrack;
 </script>
 
-<div class="max-w-4xl mx-auto p-24 font-mono text-lg ">
+<div class="font-mono text-lg ">
 	<h1 class="font-semibold">Alex's personal Website</h1>
 	{#if message}
 		<p>{message}</p>
 	{/if}
+	{#if currentTrack}
+		<p>Currently listening to: {currentTrack?.item?.name} - {currentTrack.item?.artists[0].name}</p>
+	{/if}
+	<a href={authorizeURL}> Spotify Login </a>
 	<h2 class="flex flex-row">
 		Connect with me on:
 		<a
