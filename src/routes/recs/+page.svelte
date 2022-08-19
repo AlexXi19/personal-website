@@ -13,7 +13,7 @@
 			<div class="flex flex-row gap-4 justify-between">
 				<a class="text-blue-400" target="_blank" href={rec.href}>{rec.title}</a>
 				<div>
-					<p>{rec.type}</p>
+					<p class="text-right">{rec.type}</p>
 					<p class="text-right">{isoToDate(rec.created_at)}</p>
 				</div>
 			</div>
