@@ -20,5 +20,3 @@ export const load: Load = async ({ params }): Promise<ILoadPageData> => {
 		currentTrack
 	};
 };
-
-export const prerender = true;
