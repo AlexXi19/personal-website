@@ -105,6 +105,102 @@ export interface paths {
       };
     };
   };
+  "/tokens": {
+    get: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.tokens.id"];
+          created_at?: parameters["rowFilter.tokens.created_at"];
+          access_token?: parameters["rowFilter.tokens.access_token"];
+          refresh_token?: parameters["rowFilter.tokens.refresh_token"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["tokens"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** tokens */
+          tokens?: definitions["tokens"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.tokens.id"];
+          created_at?: parameters["rowFilter.tokens.created_at"];
+          access_token?: parameters["rowFilter.tokens.access_token"];
+          refresh_token?: parameters["rowFilter.tokens.refresh_token"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.tokens.id"];
+          created_at?: parameters["rowFilter.tokens.created_at"];
+          access_token?: parameters["rowFilter.tokens.access_token"];
+          refresh_token?: parameters["rowFilter.tokens.refresh_token"];
+        };
+        body: {
+          /** tokens */
+          tokens?: definitions["tokens"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
 }
 
 export interface definitions {
@@ -123,6 +219,23 @@ export interface definitions {
     created_at?: string;
     /** Format: text */
     text?: string;
+  };
+  tokens: {
+    /**
+     * Format: uuid
+     * @description Note:
+     * This is a Primary Key.<pk/>
+     */
+    id: string;
+    /**
+     * Format: timestamp with time zone
+     * @default now()
+     */
+    created_at?: string;
+    /** Format: text */
+    access_token: string;
+    /** Format: text */
+    refresh_token: string;
   };
 }
 
@@ -167,6 +280,16 @@ export interface parameters {
   "rowFilter.messages.created_at": string;
   /** Format: text */
   "rowFilter.messages.text": string;
+  /** @description tokens */
+  "body.tokens": definitions["tokens"];
+  /** Format: uuid */
+  "rowFilter.tokens.id": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.tokens.created_at": string;
+  /** Format: text */
+  "rowFilter.tokens.access_token": string;
+  /** Format: text */
+  "rowFilter.tokens.refresh_token": string;
 }
 
 export interface operations {}

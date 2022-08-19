@@ -5,7 +5,6 @@
 
 	export let data: ILoadPageData;
 	let message = data.message;
-	let authorizeURL = data.authUrl;
 	let currentTrack = data.currentTrack;
 </script>
 
@@ -17,7 +16,6 @@
 	{#if currentTrack}
 		<p>Currently listening to: {currentTrack?.item?.name} - {currentTrack.item?.artists[0].name}</p>
 	{/if}
-	<a href={authorizeURL}> Spotify Login </a>
 	<h2 class="flex flex-row">
 		Connect with me on:
 		<a

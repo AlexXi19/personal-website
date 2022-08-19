@@ -1,7 +1,6 @@
 import { supabase } from '$lib/supabase';
 import type { definitions } from '$lib/types/supabase';
 import type { Load } from '@sveltejs/kit';
-import { spotifyApi } from '$lib/spotify';
 import { getAuthUrl, getCurrentTrack } from '$lib/utils/spotify';
 
 async function getMessage(): Promise<string | undefined> {
@@ -11,18 +10,15 @@ async function getMessage(): Promise<string | undefined> {
 
 export interface ILoadPageData {
 	message: string | undefined;
-	authUrl: string;
 	currentTrack: SpotifyApi.CurrentlyPlayingResponse | null;
 }
 
 export const load: Load = async ({ params }): Promise<ILoadPageData> => {
 	const message = await getMessage();
 	const currentTrack = await getCurrentTrack();
-	const authUrl = await getAuthUrl();
 
 	return {
 		message,
-		authUrl,
 		currentTrack
 	};
 };
