@@ -13,6 +13,19 @@ export async function getCurrentTrack() {
 	}
 }
 
+export async function getPreviousTracks(num: number) {
+	try {
+		const previousTracks = (await spotifyApi.getMyRecentlyPlayedTracks({ limit: num })).body.items;
+		if (isEmpty(previousTracks)) {
+			return null;
+		}
+		return previousTracks;
+	} catch (e) {
+		console.log('Error getting previous tracks', e);
+		return null;
+	}
+}
+
 export async function getAuthUrl() {
 	const scope = [
 		'user-read-recently-played',

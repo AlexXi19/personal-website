@@ -9,26 +9,45 @@
 	let daysSinceStart = daysSinceWebsiteStart();
 	let message = data.message;
 	let currentTrack = data.currentTrack;
-	console.log(currentTrack);
+	let mostRecentTrack = data.previousTracks?.[0];
 </script>
 
 <div class="max-w-4xl font-mono flex flex-col gap-2">
-	<h1 class="font-semibold">Alex's personal Website</h1>
+	<h2 class="font-semibold">
+		Alex's <a
+			class="text-blue-400"
+			href="https://github.com/AlexXi19/personal-website"
+			target="_blank"
+		>
+			personal website
+		</a>
+	</h2>
 	{#if message}
 		<p>{message}</p>
 	{/if}
-	<h1 />
-	<h1>
+	<h2>
 		This website has been running for <span class="font-bold">{daysSinceStart}</span> days.
-	</h1>
-	{#if currentTrack?.currently_playing_type === 'track'}
-		Currently listening to:
-		<a class="text-blue-400" href={String(currentTrack.item?.external_urls.spotify)} target="_blank"
-			>{currentTrack?.item?.name} - {currentTrack.item?.artists[0].name}</a
-		>
-	{/if}
-	{#if currentTrack?.currently_playing_type === 'episode'}
-		Currently listening to a podcast
+	</h2>
+	{#if currentTrack}
+		<h2>
+			{#if currentTrack.currently_playing_type === 'track'}
+				Currently listening to:
+				<a
+					class="text-blue-400"
+					href={String(currentTrack.item?.external_urls.spotify)}
+					target="_blank">{currentTrack?.item?.name} - {currentTrack.item?.artists[0].name}</a
+				>
+			{:else if currentTrack.currently_playing_type === 'episode'}
+				Currently listening to a podcast
+			{/if}
+		</h2>
+	{:else}
+		<h2>
+			I was listening to:
+			<a class="text-blue-400" href={'123'} target="_blank"
+				>{mostRecentTrack?.track?.name} - {mostRecentTrack?.track?.artists[0].name}</a
+			>
+		</h2>
 	{/if}
 	<h2 class="flex md:flex-row flex-col gap-1">
 		Connect with me on:
@@ -47,7 +66,7 @@
 		>
 	</h2>
 	<h2>
-		<a class="text-blue-400" href="/recs">What I like</a>
+		<a class="text-blue-400" href="/recs" sveltekit:prefetch>What I like</a>
 	</h2>
 	<h2 class="flex flex-col md:flex-row md:items-center items-start gap-[10px]">
 		Built with:
