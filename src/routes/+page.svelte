@@ -5,7 +5,7 @@
 	let message = data.message;
 </script>
 
-<div class="max-w-5xl p-10 font-mono text-lg ">
+<div class="max-w-4xl mx-auto p-24 font-mono text-lg ">
 	<h1 class="font-semibold">Alex's personal Website</h1>
 	{#if message}
 		<p>{message}</p>
