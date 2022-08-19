@@ -7,7 +7,6 @@ export const load: Load = async ({ url }) => {
 	const code = url.searchParams.get('code');
 	if (code) {
 		const data = await spotifyApi.authorizationCodeGrant(code);
-		console.log(data);
 		spotifyApi.setAccessToken(data.body['access_token']);
 		spotifyApi.setRefreshToken(data.body['refresh_token']);
 		const access_token = data.body['access_token'];

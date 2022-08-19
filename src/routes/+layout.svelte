@@ -26,9 +26,10 @@
 			<Icon src={X} class="w-6 h-6 text-gray-500" />
 		</button>
 
-		<ul class="mt-20 ">
+		<ul class="mt-20" on:click={() => (isOpen = !isOpen)}>
 			<li class="relative">
 				<a
+					sveltekit:prefetch
 					class="flex items-center font-bold text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out"
 					href="/"
 					data-mdb-ripple="true"
@@ -39,6 +40,7 @@
 			</li>
 			<li class="relative">
 				<a
+					sveltekit:prefetch
 					class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out"
 					href="/spotify"
 					data-mdb-ripple="true"
@@ -47,6 +49,7 @@
 			</li>
 			<li class="relative">
 				<a
+					sveltekit:prefetch
 					class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out"
 					href="#!"
 					data-mdb-ripple="true"

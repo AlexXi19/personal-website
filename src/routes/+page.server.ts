@@ -7,18 +7,18 @@ async function getMessage(): Promise<string | undefined> {
 	const { data, error } = await supabase.from<definitions['messages']>('messages').select('*');
 	return data?.[0].text;
 }
-
 export interface ILoadPageData {
 	message: string | undefined;
 	currentTrack: SpotifyApi.CurrentlyPlayingResponse | null;
 }
 
 export const load: Load = async ({ params }): Promise<ILoadPageData> => {
-	const message = await getMessage();
-	const currentTrack = await getCurrentTrack();
+	const [message, currentTrack] = await Promise.all([getMessage(), getCurrentTrack()]);
 
 	return {
 		message,
 		currentTrack
 	};
 };
+
+export const prerender = true;
