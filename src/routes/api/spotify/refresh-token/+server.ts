@@ -1,7 +1,7 @@
 import { spotifyApi } from '$lib/spotify';
 
 /** @type {import('./$types').RequestHandler} */
-export async function POST() {
+export async function GET() {
 	console.log('Refreshing Token...');
 	const data = await spotifyApi.refreshAccessToken();
 	spotifyApi.setAccessToken(data.body['access_token']);
