@@ -6,9 +6,10 @@
 	import myPhoto from '$lib/assets/my-photo.jpeg';
 	import type { ILoadPageData } from './+page.server';
 	import { daysSinceWebsiteStart } from '$lib/utils/random';
+
 	export let data: ILoadPageData;
+
 	let daysSinceStart = daysSinceWebsiteStart();
-	let message = data.message;
 	let currentTrack = data.currentTrack;
 	let mostRecentTrack = data.previousTracks?.[0];
 </script>
@@ -23,12 +24,10 @@
 			personal website
 		</a>
 	</h2>
-	<a>
-		<img src={myPhoto} alt="Me" class="mt-2 h-[200px] w-[190px] rounded-md shadow-lg" />
-	</a>
+	<img src={myPhoto} alt="Me" class="mt-2 h-[200px] w-[190px] rounded-md shadow-lg" />
 	<h1 class="font-bold text-xl mt-4">About Me</h1>
 	<h2>
-		My name is Alex Xi and I am currently a senior stuyding Computer Science and Economics at UC
+		My name is Alex Xi and I am currently a senior studying Computer Science and Economics at UC
 		Berkeley. I love building software and have worked on development for multiple startups. I just
 		finished an internship with Amazon and I'm currently working on engineering and product for
 		<a class="text-blue-400" href="https://instacoach.com" target="_blank">InstaCoach</a>. In my
@@ -54,7 +53,7 @@
 	{:else}
 		<h2>
 			I was listening to:
-			<a class="text-blue-400" href={'123'} target="_blank"
+			<a class="text-blue-400" href={mostRecentTrack?.track.external_urls.spotify} target="_blank"
 				>{mostRecentTrack?.track?.name} - {mostRecentTrack?.track?.artists[0].name}</a
 			>
 		</h2>
