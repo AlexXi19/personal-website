@@ -1,12 +1,9 @@
 <script lang="ts">
-	import RecList from '$lib/components/RecList.svelte';
-
 	import type { definitions } from '$lib/types/supabase';
-	import { isoToDate } from '$lib/utils/random';
-
+	import RecList from '$lib/components/RecList.svelte';
 	export let data;
 	export let recs: definitions['recs'][] = data.recs;
-	export let header = 'Software things I like:';
+	export let header = 'Fun things I like:';
 </script>
 
 <RecList {recs} {header} />

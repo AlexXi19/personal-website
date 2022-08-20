@@ -207,6 +207,7 @@ export interface paths {
           title?: parameters["rowFilter.recs.title"];
           href?: parameters["rowFilter.recs.href"];
           type?: parameters["rowFilter.recs.type"];
+          is_other?: parameters["rowFilter.recs.is_other"];
           /** Filtering Columns */
           select?: parameters["select"];
           /** Ordering */
@@ -262,6 +263,7 @@ export interface paths {
           title?: parameters["rowFilter.recs.title"];
           href?: parameters["rowFilter.recs.href"];
           type?: parameters["rowFilter.recs.type"];
+          is_other?: parameters["rowFilter.recs.is_other"];
         };
         header: {
           /** Preference */
@@ -281,6 +283,7 @@ export interface paths {
           title?: parameters["rowFilter.recs.title"];
           href?: parameters["rowFilter.recs.href"];
           type?: parameters["rowFilter.recs.type"];
+          is_other?: parameters["rowFilter.recs.is_other"];
         };
         body: {
           /** recs */
@@ -351,6 +354,8 @@ export interface definitions {
     href: string;
     /** Format: text */
     type?: string;
+    /** Format: boolean */
+    is_other?: boolean;
   };
 }
 
@@ -415,6 +420,8 @@ export interface parameters {
   "rowFilter.recs.href": string;
   /** Format: text */
   "rowFilter.recs.type": string;
+  /** Format: boolean */
+  "rowFilter.recs.is_other": string;
 }
 
 export interface operations {}
