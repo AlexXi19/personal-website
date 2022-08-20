@@ -1,6 +1,6 @@
 <script>
 	import '../app.css';
-	import { Transition } from '@rgossiaux/svelte-headlessui';
+	import { fly, slide } from 'svelte/transition';
 	import { Icon, Menu, X } from 'svelte-hero-icons';
 
 	let isOpen = false;
@@ -12,16 +12,11 @@
 	</button>
 </div>
 
-<Transition
-	show={isOpen}
-	enter="transform transition ease-in-out duration-300"
-	enterFrom="-translate-x-full"
-	enterTo="translate-x-0"
-	leave="transform transition ease-in-out duration-300"
-	leaveFrom="translate-x-0"
-	leaveTo="-translate-x-full"
->
-	<div class="w-60 h-screen shadow-md bg-white px-1 absolute">
+{#if isOpen}
+	<div
+		class="w-60 h-screen shadow-md bg-white px-1 absolute"
+		transition:fly={{ x: -250, opacity: 1 }}
+	>
 		<button class="float-right mr-3 mt-3" on:click={() => (isOpen = !isOpen)}>
 			<Icon src={X} class="w-6 h-6 text-gray-500" />
 		</button>
@@ -53,12 +48,21 @@
 					class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out"
 					href="/recs"
 					data-mdb-ripple="true"
-					data-mdb-ripple-color="dark">Recs</a
+					data-mdb-ripple-color="dark">Sofrware Recs</a
+				>
+			</li>
+			<li class="relative">
+				<a
+					sveltekit:prefetch
+					class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out"
+					href="/recs-other"
+					data-mdb-ripple="true"
+					data-mdb-ripple-color="dark">Fun Recs</a
 				>
 			</li>
 		</ul>
 	</div>
-</Transition>
+{/if}
 <div class="mx-auto p-12 pt-24 md:p-24 text-sm md:text-lg">
 	<slot />
 </div>
