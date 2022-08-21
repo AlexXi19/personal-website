@@ -300,6 +300,108 @@ export interface paths {
       };
     };
   };
+  "/posts": {
+    get: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.posts.id"];
+          created_at?: parameters["rowFilter.posts.created_at"];
+          title?: parameters["rowFilter.posts.title"];
+          body?: parameters["rowFilter.posts.body"];
+          author?: parameters["rowFilter.posts.author"];
+          live?: parameters["rowFilter.posts.live"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["posts"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** posts */
+          posts?: definitions["posts"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.posts.id"];
+          created_at?: parameters["rowFilter.posts.created_at"];
+          title?: parameters["rowFilter.posts.title"];
+          body?: parameters["rowFilter.posts.body"];
+          author?: parameters["rowFilter.posts.author"];
+          live?: parameters["rowFilter.posts.live"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.posts.id"];
+          created_at?: parameters["rowFilter.posts.created_at"];
+          title?: parameters["rowFilter.posts.title"];
+          body?: parameters["rowFilter.posts.body"];
+          author?: parameters["rowFilter.posts.author"];
+          live?: parameters["rowFilter.posts.live"];
+        };
+        body: {
+          /** posts */
+          posts?: definitions["posts"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
 }
 
 export interface definitions {
@@ -354,8 +456,36 @@ export interface definitions {
     href: string;
     /** Format: text */
     type?: string;
-    /** Format: boolean */
-    is_other?: boolean;
+    /**
+     * Format: boolean
+     * @default false
+     */
+    is_other: boolean;
+  };
+  posts: {
+    /**
+     * Format: uuid
+     * @description Note:
+     * This is a Primary Key.<pk/>
+     * @default extensions.uuid_generate_v4()
+     */
+    id: string;
+    /**
+     * Format: timestamp with time zone
+     * @default now()
+     */
+    created_at?: string;
+    /** Format: text */
+    title: string;
+    /** Format: text */
+    body: string;
+    /** Format: text */
+    author: string;
+    /**
+     * Format: boolean
+     * @default true
+     */
+    live: boolean;
   };
 }
 
@@ -422,6 +552,20 @@ export interface parameters {
   "rowFilter.recs.type": string;
   /** Format: boolean */
   "rowFilter.recs.is_other": string;
+  /** @description posts */
+  "body.posts": definitions["posts"];
+  /** Format: uuid */
+  "rowFilter.posts.id": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.posts.created_at": string;
+  /** Format: text */
+  "rowFilter.posts.title": string;
+  /** Format: text */
+  "rowFilter.posts.body": string;
+  /** Format: text */
+  "rowFilter.posts.author": string;
+  /** Format: boolean */
+  "rowFilter.posts.live": string;
 }
 
 export interface operations {}
