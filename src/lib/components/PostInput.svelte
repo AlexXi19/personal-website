@@ -16,10 +16,12 @@
 			class="w-[330px] md:w-[500px] h-[200px] focus:outline-none block p-2.5 text-sm resize-none border-gray-50 border-[1px]"
 			placeholder="Your message"
 		/>
-		<div class="flex flex-row justify-between text-gray-500 mr-4">
+		<div class="flex flex-row justify-between text-gray-500 mr-4 p-1">
 			<input class="w-full focus:outline-none text-sm rounded-lg p-2.5" placeholder="Your name" />
-			<button class="flex flex-row items-center gap-1">
-				<p class="text-md">Send</p>
+			<button
+				class="flex flex-row items-center justify-center content-center gap-1 rounded-xl bg-gray-200 p-2"
+			>
+				<p class="text-md h-fit">Send</p>
 				<Icon src={ChevronRight} class="h-5 w-5" />
 			</button>
 		</div>
