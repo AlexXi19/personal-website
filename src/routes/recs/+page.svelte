@@ -1,5 +1,5 @@
 <script lang="ts">
-	import RecList from '$lib/components/recList.svelte';
+	import RecList from '$lib/components/RecList.svelte';
 
 	import type { definitions } from '$lib/types/supabase';
 	import { isoToDate } from '$lib/utils/random';
