@@ -14,6 +14,11 @@
 	let mostRecentTrack = data.previousTracks?.[0];
 </script>
 
+<svelte:head>
+	<title>Alex's personal website</title>
+	<meta name="robots" content="noindex nofollow" />
+	<html lang="en" />
+</svelte:head>
 <div class="max-w-4xl mx-auto font-mono flex flex-col gap-2">
 	<h2 class="font-semibold">
 		Welcome to Alex Xi's <a
