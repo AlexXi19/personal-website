@@ -49,7 +49,9 @@
 				<a
 					class="text-blue-400"
 					href={String(currentTrack.item?.external_urls.spotify)}
-					target="_blank">{currentTrack?.item?.name} - {currentTrack.item?.artists[0].name}</a
+					target="_blank"
+				>
+					{currentTrack?.item?.name} - {currentTrack.item?.artists[0].name}</a
 				>
 			{:else if currentTrack.currently_playing_type === 'episode'}
 				I am currently listening to a podcast
