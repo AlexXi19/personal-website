@@ -13,7 +13,10 @@ const config = {
 			postcss: true
 		}),
 		mdsvex({
-			extensions: ['.md']
+			extensions: ['.md'],
+			layout: {
+				blog: 'src/lib/components/BlogLayout.svelte'
+			}
 		})
 	]
 };

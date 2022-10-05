@@ -8,7 +8,7 @@ layout: blog
 
 # [Security Principles](https://textbook.cs161.org/principles/principles.html)
 
-```javascript
+```js
 def testCodeBlock() {
   // Testing code block
 	return 250

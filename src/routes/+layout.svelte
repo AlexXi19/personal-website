@@ -2,7 +2,6 @@
 	import '../app.css';
 	import { fly, slide } from 'svelte/transition';
 	import { Icon, Menu, X } from 'svelte-hero-icons';
-
 	let isOpen = false;
 </script>
 
