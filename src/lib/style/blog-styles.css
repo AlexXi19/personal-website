@@ -1,0 +1,130 @@
+/* style.css */
+* {
+	font-weight: 400;
+	line-height: 1.7;
+}
+
+img {
+	max-width: 100%;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+h1, h2, h3 {
+	font-weight: 400;
+	margin-top: 12px; 
+}
+
+h1 {
+	font-size: 30px;
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 10px; 
+}
+
+h2 {
+	font-size: 27px;
+	margin-top: 10px;
+}
+
+h3 {
+
+	font-size: 21px;
+}
+
+a {
+	font-weight: 500;
+	color: #007bff
+}
+
+a:hover {
+	color: #0056b3;
+	text-decoration: underline;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #ccc;
+	padding: 10px;
+	margin-bottom: 10px;
+	margin-top: 10px; 
+}
+
+code {
+	font-family: monospace;
+	background-color: #f8f8f8;
+}
+
+ul {
+	list-style-type: circle;
+	margin-left: 10px;
+}
+
+ol {
+	list-style-type: decimal;
+	margin-left: 10px;
+}
+
+ol>li {
+	margin-left: 10px; 
+}
+
+ul>li {
+	margin-left: 10px;
+}
+
+ul > li > ul {
+	list-style-type: square;
+}
+
+ul > li > ul > li {
+	margin-left: 10px;
+}
+
+ul > li > ul > li > ul {
+	list-style-type: disc;
+}
+
+ul > li > ul > li > ul > li {
+	margin-left: 10px;
+}
+
+blockquote {
+	margin: 0;
+	padding: 0 1.15em;
+	color: #6a737d;
+	border-left: .25em solid #dfe2e5;
+}
+
+blockquote p {
+	display: inline;
+}
+
+blockquote p + p {
+	margin-top: 1.15em;
+}
+
+blockquote p:last-child {
+	margin-bottom: 0;
+}
+
+blockquote p:first-child {
+	margin-top: 0;
+}
+
+blockquote p:first-child::before {
+	content: open-quote;
+}
+
+
+blockquote p:last-child::after {
+	content: close-quote;
+}
+
+blockquote p + p::before {
+	content: "\2014 \00A0";
+}
+
+blockquote p + p::after {
+	content: "";
+}
+

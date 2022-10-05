@@ -5,7 +5,9 @@ export interface BlogPost {
 }
 
 export interface Catalog {
-	slug: string;
-	title: string;
-	date: string;
+	meta: {
+		title: string;
+		date: string;
+	};
+	path: string;
 }

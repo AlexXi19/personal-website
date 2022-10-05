@@ -9,9 +9,9 @@
 	<div class="flex flex-col gap-3 py-5">
 		{#each catalog as blog}
 			<div class="flex flex-row gap-4 justify-between">
-				<a href={`blog/${blog.slug}`}>{blog.title}</a>
+				<a href={`/${blog.path}`}>{blog.meta.title}</a>
 				<div>
-					<p class="text-right">{isoToDate(blog.date)}</p>
+					<p class="text-right">{isoToDate(blog.meta.date)}</p>
 				</div>
 			</div>
 		{/each}

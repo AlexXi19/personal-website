@@ -1,8 +1,6 @@
-import type { BlogPost } from '$lib/types/post';
-
-export async function load({ params }: { params: { slug: string } }) {
-	const post = await import(`../md/${params.slug}.md`);
-	const { title, date } = post.metadata as BlogPost;
+export async function load({ params }: any) {
+	const post = await import(`../blogs/${params.slug}.md`);
+	const { title, date } = post.metadata;
 	const content = post.default;
 
 	return {
