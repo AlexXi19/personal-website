@@ -98,7 +98,7 @@ The pop instruction removes an element from the stack.
 - When calling a function, the ESP and EBP need to shift to create a new stack frame, and the EIP must move to the callee’s code
 - When returning from a function, the ESP, EBP, and EIP must return to their old values
 
-![Alt](/src/lib/assets/blog/call-stack.png)
+![Alt](https://tbsnhkewuwyfxowgazvr.supabase.co/storage/v1/object/public/public/call-stack.png)
 
 - EIP stores a pointer that points to the current instruction.
 
