@@ -759,3 +759,39 @@ We say a function ff is “collision-resistant” if it is hard to find two inpu
 =y.
 
 ![Stack](https://tbsnhkewuwyfxowgazvr.supabase.co/storage/v1/object/public/public/cs161/stack.png)
+
+# Random notes
+
+EBP points to the sfp of the current call stack.
+
+ESP points to the bottom of the current call stack.
+
+ESP gets moved up 4 bytes every time something is popped off the stack.
+
+Arrays are put on the stack in reverse order.
+
+An x86 instruction is 8 bytes.
+
+%c walks up the stack by 4 bytes.
+
+```js
+int main() {
+    int i;    // i is an int
+    int *p;   // this is a * in a type-name. It means p is a pointer-to-int
+    p = &i;   // use & operator to get a pointer to i, assign that to p.
+    *p = 3;   // use * operator to "dereference" p, meaning 3 is assigned to i.
+}
+```
+
+A string is a pointer, so `printf(str)` prints the string that `str` points to.
+
+Non executable pages mean you cannot execute shell code on the stack.
+
+return to libc attack
+
+- Overwrite the RIP with the address of the libc function
+- Write 4 bytes of garbage as the RIP of the libc function
+- Write 4 bytes pointing to the address above as pointer to the string
+- (Alternative) Write 4 bytes pointing to an address inside the buffer
+- Write the string as the argument as the libc function
+- (Alternative) Write the string in the buffer.
