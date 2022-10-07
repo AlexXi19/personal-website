@@ -178,6 +178,7 @@ Defensive programming:
 - Use safe libraries
 - Use functions that check bounds
   - Example: Use fgets instead of gets
+    - fgets still has a integer conversion vulnerability
   - Example: Use strncpy or strlcpy instead of strcpy
   - Example: Use snprintf instead of sprintf
   - Relies on programmer discipline or tools that check your program
@@ -535,6 +536,8 @@ Main issue: Hashes are unkeyed functions
 
 ## Message Authentication Codes (MACs)
 
+Macs and hashes don't provide confidentiality.
+
 We want to attach some piece of information to prove that someone with the key sent this message
 
 - Alice wants to send M to Bob, but doesn’t want Mallory to tamper with it
@@ -748,3 +751,11 @@ KeyGen():
 - Compute H(M)d mod N
   Verify(e, N, M, sig)
 - Verify that H(M) ≡ sige mod N
+
+We say a function ff is one-way if given f(x)f(x) it is hard to find x'x such that f(x') = f(x)f(x′)=f(x).
+We say a function ff is “collision-resistant” if it is hard to find two inputs xx, yy such that f(x) = f(y)f(x)=f(y) but x \ne yx
+
+​
+=y.
+
+![Stack](https://tbsnhkewuwyfxowgazvr.supabase.co/storage/v1/object/public/public/cs161/stack.png)
