@@ -479,6 +479,10 @@ This scheme is only secure if nonce is randomly generated and never reused.
 ![CFB1](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/CFB_encryption.svg/1202px-CFB_encryption.svg.png)
 ![CFB2](https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/CFB_decryption.svg/1202px-CFB_decryption.svg.png)
 
+CFB is IND-CPA secure.
+
+If the IV is reused, then the attacker can determine whether the two messages have identical prefixes.
+
 ## Lack of Integrity and Authenticity
 
 Block cyphers are designed for _confidentiality_. .
@@ -732,6 +736,14 @@ Enc(e, N, M):
   Dec(d, C):
 - Output Cd = (Me)d mod N
 
+RSA by itself is not IND-CPA secure.
+
+### Optimal asymmetric encryption padding (OAEP)
+
+A variation of RSA that introduces randomness
+Different from “padding” used for symmetric encryption, used to add randomness instead of dummy bytes
+Idea: RSA can only encrypt “random-looking” numbers, so encrypt the message with a random key
+
 ## Digital Signature
 
 1. KeyGen() → PK, SK: Generate a public/private keypair, where PK is the verify (public) key, and SK is the signing (secret) key
@@ -795,3 +807,48 @@ return to libc attack
 - (Alternative) Write 4 bytes pointing to an address inside the buffer
 - Write the string as the argument as the libc function
 - (Alternative) Write the string in the buffer.
+
+MACs and hashes don't have confidentiality guarantees.
+
+Pay attention to string concat. (e.g. swapping)
+
+A scheme is not confidential if it leaks **ANY** information about the plaintext
+
+MAC on plaintext is **LEAKY**
+
+For integrity, you need to sign with some kind of key. Hashes don't provide integrity.
+
+AES-CTR is IND-CPA secure. AES-CTR does not need padding.
+
+This follows from the definition of certificates: they include a user’s public key, and
+a signature on the enclosed public key, signed by the issuer
+
+RSA uses public key to encrypt messages and private key to decrypt messages.
+
+Theorem: Med ≡ M mod N
+Raise the ciphertext to your private key.
+
+Time of check time of use
+A common failure of ensuring complete mediation involves race conditions. The time of check to time of use (TOCTTOU) vulnerability usually arises when enforcing access control policies such as when using a reference monitor. Consider the following code:
+
+ASLR causes the absolute addresses of variables, saved registers (sfp and rip), and code instructions to be different each time the program is run. This means the attacker can no longer overwrite some part of memory (such as the rip) with a constant address. Instead, the attacker has to guess the address of their malicious instructions.
+
+Entropy (k bits of entropy) cannot be increased.
+
+ECB is insecure.
+
+Certificates are signed by superior's signing keys.
+
+IND-CPA implies non-deterministic
+
+CTR with reused IV is a one time pad.
+
+Pointer Authentication: just overwriting the pointer info is not enough, the pointer is authenticated using the combination of the address and the pointer info.
+
+ESP gets moved when an item is popped off the stack.
+
+Length extension attack: Given H(x) and the length of x, but not x, an attacker can create H(x || m) for any m of the attacker’s choosing
+
+MSB lives at highest address in little-endian.
+
+IND-CPA secure => confidentiality
