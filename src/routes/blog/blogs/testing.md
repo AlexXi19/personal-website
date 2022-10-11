@@ -853,8 +853,6 @@ MSB lives at highest address in little-endian.
 
 IND-CPA secure => confidentiality
 
-<<<<<<< HEAD
-
 # Random notes
 
 EBP points to the sfp of the current call stack.
