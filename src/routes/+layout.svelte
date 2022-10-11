@@ -23,7 +23,7 @@
 		<ul class="mt-20" on:click={() => (isOpen = !isOpen)}>
 			<li class="relative">
 				<a
-					sveltekit:prefetch
+					data-sveltekit-prefetch
 					class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out"
 					href="/"
 					data-mdb-ripple="true"
@@ -34,7 +34,7 @@
 			</li>
 			<!-- <li class="relative">
 				<a
-					sveltekit:prefetch
+					data-sveltekit-prefetch
 					class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out"
 					href="/spotify"
 					data-mdb-ripple="true"
@@ -43,7 +43,7 @@
 			</li> -->
 			<!-- <li class="relative">
 				<a
-					sveltekit:prefetch
+					data-sveltekit-prefetch
 					class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out"
 					href="/posts"
 					data-mdb-ripple="true"
@@ -52,7 +52,7 @@
 			</li> -->
 			<li class="relative">
 				<a
-					sveltekit:prefetch
+					data-sveltekit-prefetch
 					class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out"
 					href="/blog"
 					data-mdb-ripple="true"
@@ -61,7 +61,7 @@
 			</li>
 			<li class="relative">
 				<a
-					sveltekit:prefetch
+					data-sveltekit-prefetch
 					class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out"
 					href="/recs"
 					data-mdb-ripple="true"
@@ -70,7 +70,7 @@
 			</li>
 			<li class="relative">
 				<a
-					sveltekit:prefetch
+					data-sveltekit-prefetch
 					class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out"
 					href="/recs-other"
 					data-mdb-ripple="true"

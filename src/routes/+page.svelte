@@ -4,8 +4,8 @@
 	import tailwindLogo from '$lib/assets/Tailwind-CSS-logo.png';
 	import vercelLogo from '$lib/assets/vercel-logotype-dark.png';
 	import myPhoto from '$lib/assets/my-photo.jpeg';
-	import type { ILoadPageData } from './+page.server';
 	import { daysSinceWebsiteStart } from '$lib/utils/random';
+	import type { ILoadPageData } from './+page';
 
 	export let data: ILoadPageData;
 
@@ -37,7 +37,7 @@
 		finished an internship with Amazon and I'm currently working on engineering and product for
 		<a class="text-blue-400" href="https://instacoach.com" target="_blank">InstaCoach</a>. In my
 		free time, I like to learn about software engineering, here are
-		<a class="text-blue-400" href="/recs" sveltekit:prefetch>some things that I like</a>.
+		<a class="text-blue-400" href="/recs" data-sveltekit-prefetch>some things that I like</a>.
 	</h2>
 	<h2 class="mt-4">
 		This website has been running for <span class="font-bold">{daysSinceStart}</span> days.
