@@ -66,6 +66,8 @@
 		padding: 10px;
 		margin-bottom: 10px;
 		margin-top: 10px;
+		overflow-x: auto;
+		contain: content;
 	}
 
 	div :global(code) {
