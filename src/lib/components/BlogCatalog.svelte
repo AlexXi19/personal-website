@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type { Catalog } from '$lib/types/post';
-	import { isoToDate } from '$lib/utils/random';
 	export let catalog: Catalog[];
 </script>
 
@@ -11,7 +10,7 @@
 			<div class="flex flex-row gap-4 justify-between">
 				<a href={`/${blog.path}`}>{blog.meta.title}</a>
 				<div>
-					<p class="text-right">{isoToDate(blog.meta.date)}</p>
+					<p class="text-right">{blog.meta.date}</p>
 				</div>
 			</div>
 		{/each}

@@ -1,6 +1,6 @@
 ---
 title: Ideas I want to explore
-date: '2022-10-6'
+date: '2022/10/6'
 layout: blog
 ---
 
