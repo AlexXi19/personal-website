@@ -2,6 +2,7 @@
 title: Test
 date: '2022-10-1'
 layout: blog
+live: false
 ---
 
 # Hi I'm testing my blog
@@ -771,6 +772,87 @@ We say a function ff is “collision-resistant” if it is hard to find two inpu
 =y.
 
 ![Stack](https://tbsnhkewuwyfxowgazvr.supabase.co/storage/v1/object/public/public/cs161/stack.png)
+
+# Random notes
+
+EBP points to the sfp of the current call stack.
+
+ESP points to the bottom of the current call stack.
+
+ESP gets moved up 4 bytes every time something is popped off the stack.
+
+Arrays are put on the stack in reverse order.
+
+An x86 instruction is 8 bytes.
+
+%c walks up the stack by 4 bytes.
+
+```js
+int main() {
+    int i;    // i is an int
+    int *p;   // this is a * in a type-name. It means p is a pointer-to-int
+    p = &i;   // use & operator to get a pointer to i, assign that to p.
+    *p = 3;   // use * operator to "dereference" p, meaning 3 is assigned to i.
+}
+```
+
+A string is a pointer, so `printf(str)` prints the string that `str` points to.
+
+Non executable pages mean you cannot execute shell code on the stack.
+
+return to libc attack
+
+- Overwrite the RIP with the address of the libc function
+- Write 4 bytes of garbage as the RIP of the libc function
+- Write 4 bytes pointing to the address above as pointer to the string
+- (Alternative) Write 4 bytes pointing to an address inside the buffer
+- Write the string as the argument as the libc function
+- (Alternative) Write the string in the buffer.
+
+MACs and hashes don't have confidentiality guarantees.
+
+Pay attention to string concat. (e.g. swapping)
+
+A scheme is not confidential if it leaks **ANY** information about the plaintext
+
+MAC on plaintext is **LEAKY**
+
+For integrity, you need to sign with some kind of key. Hashes don't provide integrity.
+
+AES-CTR is IND-CPA secure. AES-CTR does not need padding.
+
+This follows from the definition of certificates: they include a user’s public key, and
+a signature on the enclosed public key, signed by the issuer
+
+RSA uses public key to encrypt messages and private key to decrypt messages.
+
+Theorem: Med ≡ M mod N
+Raise the ciphertext to your private key.
+
+Time of check time of use
+A common failure of ensuring complete mediation involves race conditions. The time of check to time of use (TOCTTOU) vulnerability usually arises when enforcing access control policies such as when using a reference monitor. Consider the following code:
+
+ASLR causes the absolute addresses of variables, saved registers (sfp and rip), and code instructions to be different each time the program is run. This means the attacker can no longer overwrite some part of memory (such as the rip) with a constant address. Instead, the attacker has to guess the address of their malicious instructions.
+
+Entropy (k bits of entropy) cannot be increased.
+
+ECB is insecure.
+
+Certificates are signed by superior's signing keys.
+
+IND-CPA implies non-deterministic
+
+CTR with reused IV is a one time pad.
+
+Pointer Authentication: just overwriting the pointer info is not enough, the pointer is authenticated using the combination of the address and the pointer info.
+
+ESP gets moved when an item is popped off the stack.
+
+Length extension attack: Given H(x) and the length of x, but not x, an attacker can create H(x || m) for any m of the attacker’s choosing
+
+MSB lives at highest address in little-endian.
+
+IND-CPA secure => confidentiality
 
 # Random notes
 

@@ -1,28 +1,24 @@
 import { supabase } from '$lib/supabase';
 import type { definitions } from '$lib/types/supabase';
-import type { Load } from '@sveltejs/kit';
-import { getAuthUrl, getCurrentTrack, getPreviousTracks } from '$lib/utils/spotify';
+import { getCurrentTrack, getPreviousTracks } from '$lib/utils/spotify';
+import { json } from '@sveltejs/kit';
 
 async function getMessage(): Promise<string | undefined> {
 	const { data, error } = await supabase.from<definitions['messages']>('messages').select('*');
 	return data?.[0].text;
 }
-export interface ILoadPageData {
-	message: string | undefined;
-	currentTrack: SpotifyApi.CurrentlyPlayingResponse | null;
-	previousTracks: SpotifyApi.PlayHistoryObject[] | null;
-}
 
-export const load: Load = async ({ params }): Promise<ILoadPageData> => {
+/** @type {import('./$types').RequestHandler} */
+export async function GET() {
 	const [message, currentTrack, previousTracks] = await Promise.all([
 		getMessage(),
 		getCurrentTrack(),
 		getPreviousTracks(5)
 	]);
 
-	return {
+	return json({
 		message,
 		currentTrack,
 		previousTracks
-	};
-};
+	});
+}

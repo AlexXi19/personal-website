@@ -9,3 +9,5 @@ export async function load({ params }: any) {
 		date
 	};
 }
+
+export const prerender = 'auto';
