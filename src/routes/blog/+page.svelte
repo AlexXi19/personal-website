@@ -5,4 +5,6 @@
 	export let data: { posts: Catalog[] };
 </script>
 
-<BlogCatalog catalog={data.posts} />
+<div class=" p-12 pt-24 md:p-24">
+	<BlogCatalog catalog={data.posts} />
+</div>

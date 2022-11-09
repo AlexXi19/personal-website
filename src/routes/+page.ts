@@ -2,7 +2,6 @@ import { getOtherRecs } from '$lib/utils/recs';
 import type { Load } from '@sveltejs/kit';
 
 export interface ILoadPageData {
-	message: string | undefined;
 	currentTrack: SpotifyApi.CurrentlyPlayingResponse | null;
 	previousTracks: SpotifyApi.PlayHistoryObject[] | null;
 }

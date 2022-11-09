@@ -6,4 +6,6 @@
 	export let header = 'Fun things I like:';
 </script>
 
-<RecList {recs} {header} />
+<div class=" p-12 pt-24 md:p-24">
+	<RecList {recs} {header} />
+</div>

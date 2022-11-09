@@ -7,4 +7,6 @@
 	export let header = 'Software things I like:';
 </script>
 
-<RecList {recs} {header} />
+<div class=" p-12 pt-24 md:p-24">
+	<RecList {recs} {header} />
+</div>
