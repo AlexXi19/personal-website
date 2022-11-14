@@ -1,4 +1,6 @@
-<script>
+<script lang="ts">
+	import { page } from '$app/stores';
+
 	import '../app.css';
 	import { fly, slide } from 'svelte/transition';
 	import { Icon, Menu, X } from 'svelte-hero-icons';
@@ -72,6 +74,15 @@
 				<a
 					data-sveltekit-prefetch
 					class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out"
+					href="/music"
+					data-mdb-ripple="true"
+					data-mdb-ripple-color="dark">Music</a
+				>
+			</li>
+			<li class="relative">
+				<a
+					data-sveltekit-prefetch
+					class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out"
 					href="/recs-other"
 					data-mdb-ripple="true"
 					data-mdb-ripple-color="dark">Fun Recs</a
@@ -80,6 +91,6 @@
 		</ul>
 	</div>
 {/if}
-<div class="mx-auto p-12 pt-24 md:p-24 text-sm md:text-lg">
+<div class="mx-auto text-sm md:text-lg">
 	<slot />
 </div>

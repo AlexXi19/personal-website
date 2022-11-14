@@ -6,7 +6,7 @@
 	import myPhoto from '$lib/assets/my-photo.jpeg';
 	import { daysSinceWebsiteStart } from '$lib/utils/random';
 	import type { ILoadPageData } from './+page';
-
+	import SpotifyEmbed from '$lib/components/SpotifyEmbed.svelte';
 	export let data: ILoadPageData;
 
 	let daysSinceStart = daysSinceWebsiteStart();
@@ -20,7 +20,7 @@
 	<meta name="description" content="Alex Xi" />
 	<html lang="en" />
 </svelte:head>
-<div class="max-w-4xl mx-auto font-mono flex flex-col gap-2">
+<div class="max-w-4xl  p-12 pt-24 md:p-24 mx-auto font-mono flex flex-col gap-2">
 	<h2 class="font-semibold">
 		Welcome to Alex Xi's <a
 			class="text-blue-400"
@@ -48,13 +48,9 @@
 		<h2>
 			{#if currentTrack.currently_playing_type === 'track'}
 				I am currently listening to:
-				<a
-					class="text-blue-400"
-					href={String(currentTrack.item?.external_urls.spotify)}
-					target="_blank"
-				>
-					{currentTrack?.item?.name} - {currentTrack.item?.artists[0].name}</a
-				>
+				<div class="py-2">
+					<SpotifyEmbed spotifyLink={currentTrack?.item?.id} height={'156'} />
+				</div>
 			{:else if currentTrack.currently_playing_type === 'episode'}
 				I am currently listening to a podcast
 			{/if}
@@ -62,11 +58,12 @@
 	{:else}
 		<h2>
 			I was listening to:
-			<a class="text-blue-400" href={mostRecentTrack?.track.external_urls.spotify} target="_blank"
-				>{mostRecentTrack?.track?.name} - {mostRecentTrack?.track?.artists[0].name}</a
-			>
+			<div class="py-2">
+				<SpotifyEmbed spotifyLink={mostRecentTrack?.track.id} height={'156'} />
+			</div>
 		</h2>
 	{/if}
+
 	<h2 class="flex md:flex-row flex-col gap-1">
 		Connect with me on:
 		<a

@@ -4,16 +4,18 @@
 	export let date;
 </script>
 
-<div class="font-semibold py-2 text-5xl">{title}</div>
+<div class="p-12 pt-24 md:p-24">
+	<div class="font-semibold py-2 text-5xl">{title}</div>
 
-<div>
-	<article>
-		<div class="flex flex-row justify-between">
-			<p class="py-2">Published: {date}</p>
-			<a href="/blog">View all blog posts</a>
-		</div>
-		<slot />
-	</article>
+	<div>
+		<article>
+			<div class="flex flex-row justify-between">
+				<p class="py-2">Published: {date}</p>
+				<a href="/blog">View all blog posts</a>
+			</div>
+			<slot />
+		</article>
+	</div>
 </div>
 
 <style>
