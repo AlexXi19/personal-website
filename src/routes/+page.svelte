@@ -15,8 +15,9 @@
 </script>
 
 <svelte:head>
-	<title>Alex's personal website</title>
+	<title>Alex Xi</title>
 	<meta name="robots" content="noindex nofollow" />
+	<meta name="description" content="Alex Xi" />
 	<html lang="en" />
 </svelte:head>
 <div class="max-w-4xl mx-auto font-mono flex flex-col gap-2">
@@ -29,14 +30,15 @@
 			personal website
 		</a>
 	</h2>
-	<img src={myPhoto} alt="Me" class="mt-2 h-[200px] w-[190px] rounded-md shadow-lg" />
+	<img src={myPhoto} alt="Me" class="mt-2 w-60 rounded-md shadow-lg" />
 	<h1 class="font-bold text-xl mt-4">About Me</h1>
 	<h2>
 		My name is Alex Xi and I am currently a senior studying Computer Science and Economics at UC
-		Berkeley. I love building software and have worked on development for multiple startups. I just
-		finished an internship with Amazon and I'm currently working on engineering and product for
-		<a class="text-blue-400" href="https://instacoach.com" target="_blank">InstaCoach</a>. In my
-		free time, I like to learn about software engineering, here are
+		Berkeley. In the past, I've had experience building fullstack applications for multiple startups
+		and building data pipelines using AWS technologies for Amazon Alexa. My current interests in
+		software are geared towards database systems, large scale business applications, data
+		infrastructure and all ML/AI related systems (everything that's not the model). In my free time,
+		I like to browse around and learn about software engineering, here are
 		<a class="text-blue-400" href="/recs" data-sveltekit-prefetch>some things that I like</a>.
 	</h2>
 	<h2 class="mt-4">
