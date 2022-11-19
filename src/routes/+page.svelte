@@ -36,7 +36,7 @@
 		My name is Alex Xi and I am currently a senior studying Computer Science and Economics at UC
 		Berkeley. I've had experience building fullstack applications for multiple startups and data
 		pipelines for forecasting at Amazon Alexa. My current interests are in data related systems
-		(databases, big data infrastructure and all ML/AI platform) and large scale (service oriented)
+		(databases, big data infrastructure and ML/AI platform) and large scale (service oriented)
 		applications. In my free time, I like to browse around and learn about software engineering,
 		here are
 		<a class="text-blue-400" href="/recs" data-sveltekit-prefetch>some things that I like</a>.
