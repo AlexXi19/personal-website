@@ -34,11 +34,11 @@
 	<h1 class="font-bold text-xl mt-4">About Me</h1>
 	<h2>
 		My name is Alex Xi and I am currently a senior studying Computer Science and Economics at UC
-		Berkeley. In the past, I've had experience building fullstack applications for multiple startups
-		and building data pipelines using AWS technologies for Amazon Alexa. My current interests in
-		software are geared towards database systems, large scale business applications, data
-		infrastructure and all ML/AI related systems (everything that's not the model). In my free time,
-		I like to browse around and learn about software engineering, here are
+		Berkeley. I've had experience building fullstack applications for multiple startups and data
+		pipelines for forecasting at Amazon Alexa. My current interests are in data related systems
+		(databases, big data infrastructure and all ML/AI platform) and large scale (service oriented)
+		applications. In my free time, I like to browse around and learn about software engineering,
+		here are
 		<a class="text-blue-400" href="/recs" data-sveltekit-prefetch>some things that I like</a>.
 	</h2>
 	<h2 class="mt-4">
