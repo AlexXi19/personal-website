@@ -12,3 +12,4 @@ layout: blog
 - Finding the right amount of abstractions and "design principles" for a project
 - Building a database from scratch
 - Building interpreters and compilers
+- Building a full stack ML serving framework
