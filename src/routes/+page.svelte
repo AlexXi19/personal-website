@@ -33,16 +33,22 @@
 	This website has been running for {daysSinceStart} days
 
 	<img src={myPhoto} alt="Me" class="mt-2 w-60 rounded-md shadow-lg" />
+
 	<h2 class="flex md:flex-row flex-col gap-1">
+		Connect with me on
 		<a
-			class="text-blue-400 h-5 "
+			class="text-blue-400 h-5 md:pl-2"
 			href="https://www.linkedin.com/in/alex-xi-9a6527214/"
 			target="”_blank”"
 		>
 			Linkedin</a
 		>
-		<a class="text-blue-400 h-5" href="https://github.com/AlexXi19" target="_blank">GitHub</a>
-		<a class="text-blue-400 h-5" href="https://twitter.com/alex2001314" target="_blank">Twitter</a>
+		<a class="text-blue-400 h-5 md:pl-2" href="https://github.com/AlexXi19" target="_blank"
+			>GitHub</a
+		>
+		<a class="text-blue-400 h-5 md:pl-2" href="https://twitter.com/alex2001314" target="_blank"
+			>Twitter</a
+		>
 	</h2>
 
 	<h1 class="font-bold text-xl mt-4">About Me</h1>
@@ -55,7 +61,7 @@
 	</p>
 	<p class="py-2">
 		In my free time, I like to browse around and learn about software engineering, here are
-		<a class="text-blue-400" href="/recs" data-sveltekit-prefetch>some things I'm working on</a>
+		<a class="text-blue-400" href="/work" data-sveltekit-prefetch>some things I'm working on</a>
 		and
 		<a class="text-blue-400" href="/recs" data-sveltekit-prefetch>some things that I like</a>.
 	</p>
