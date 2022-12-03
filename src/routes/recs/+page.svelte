@@ -1,5 +1,6 @@
 <script lang="ts">
 	import RecList from '$lib/components/RecList.svelte';
+	import SubPageLayout from '$lib/components/SubPageLayout.svelte';
 	import type { definitions } from '$lib/types/supabase';
 
 	export let data;
@@ -7,6 +8,6 @@
 	export let header = 'Software things I like:';
 </script>
 
-<div class=" p-12 pt-24 md:p-24">
+<SubPageLayout title="">
 	<RecList {recs} {header} />
-</div>
+</SubPageLayout>

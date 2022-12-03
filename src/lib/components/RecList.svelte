@@ -5,7 +5,7 @@
 	export let header: string;
 </script>
 
-<div class="mx-auto font-mono text-sm max-w-4xl">
+<div class="font-mono text-sm max-w-4xl">
 	<h1 class="font-bold text-lg">{header}</h1>
 	<div class="flex flex-col gap-3 py-5">
 		{#each recs as rec}
