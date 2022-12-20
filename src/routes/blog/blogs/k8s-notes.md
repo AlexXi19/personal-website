@@ -15,6 +15,8 @@ Declarative language.
 
 ## Learning Resources
 
+https://nodejs.org/en/docs/guides/nodejs-docker-webapp/
+
 https://devopscube.com/kubernetes-tutorials-beginners/
 
 https://www.weave.works/blog/deploying-an-application-on-kubernetes-from-a-to-z

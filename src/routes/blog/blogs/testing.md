@@ -934,3 +934,52 @@ Length extension attack: Given H(x) and the length of x, but not x, an attacker 
 MSB lives at highest address in little-endian.
 
 IND-CPA secure => confidentiality
+
+## Web
+
+### Same origin policy
+
+Same origin iff protocol, domain, and port of the url all match exactly.
+
+Two websites with different origins cannot interact with each other (e.g. through iframes)
+
+Exceptions
+
+- JavaScript runs with the origin of the page that loads it
+- Websites can fetch and display images from other origins
+- Websites can agree to allow some limited sharing
+
+Cookies
+Domain and path attribute define which requests the browser should attach this cookie for
+
+If the Secure attribute is True, then the browser only sends the cookie if the request is made over HTTPS (not HTTP)
+
+If the HttpOnly attribute is True, then JavaScript in the browser is not allowed to access the cookie
+
+Server can create a cookie by including a `Set-Cookie` header in the response
+
+Cookie Policies
+
+### Setting Cookies
+
+- Server with domain X can set a cookie with domain attribute Y if
+  - The domain attribute is a domain suffix of the server’s domain
+  - X ends in Y
+  - X is below or equal to Y on the hierarchy
+  - X is more specific or equal to Y
+- The domain attribute Y is not a top-level domain (TLD)
+- No restrictions for the Path attribute (the browser will accept any path)
+
+Examples:
+
+- mail.google.com can set cookies for Domain=google.com
+- google.com can set cookies for Domain=google.com
+- google.com cannot set cookies for Domain=com, because com is a top-level domain
+
+### Sending Cookies
+
+- The browser sends the cookie if both of these are true:
+  - The domain attribute is a domain suffix of the server’s domain
+  - The path attribute is a prefix of the server’s path
+
+### CSRF

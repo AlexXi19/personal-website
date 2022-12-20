@@ -6,11 +6,6 @@
 <SubPageLayout title="What I'm working on:">
 	<div class="flex flex-col gap-6 font-mono pt-3">
 		<Work
-			href="https://i.pinimg.com/originals/49/aa/b3/49aab3b1b113e8d3315af1dd1eeef971.jpg"
-			title="Finals!!!"
-			timeStarted="Dec 2022"
-		/>
-		<Work
 			href="https://github.com/tensorchord/envd"
 			title="envd"
 			description="a command-line tool that helps you create the container-based development environment"
