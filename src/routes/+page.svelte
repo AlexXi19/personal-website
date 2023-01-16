@@ -5,13 +5,20 @@
 	import vercelLogo from '$lib/assets/vercel-logotype-dark.png';
 	import myPhoto from '$lib/assets/my-photo.jpeg';
 	import { daysSinceWebsiteStart } from '$lib/utils/random';
-	import type { ILoadPageData } from './+page';
 	import SpotifyEmbed from '$lib/components/SpotifyEmbed.svelte';
-	export let data: ILoadPageData;
+	import { onMount } from 'svelte';
+	let currentTrack: SpotifyApi.CurrentlyPlayingResponse | null = null;
+	let mostRecentTrack: SpotifyApi.PlayHistoryObject[] | null = null;
+
+	onMount(async () => {
+		const res = await fetch(`${window.location.href}api/spotify/recent`);
+		const data = (await res.json()).body;
+		console.log(data);
+		currentTrack = data.currentTrack;
+		mostRecentTrack = data.previousTracks?.[0];
+	});
 
 	let daysSinceStart = daysSinceWebsiteStart();
-	let currentTrack = data.currentTrack;
-	let mostRecentTrack = data.previousTracks?.[0];
 </script>
 
 <svelte:head>
@@ -65,7 +72,7 @@
 		and
 		<a class="text-blue-400" href="/recs">some things that I'm reading</a>.
 	</p>
-	<div class="pt-2 font-bold">
+	<div class="pt-2 font-bold h-[170px]">
 		{#if currentTrack}
 			<h2>
 				{#if currentTrack.currently_playing_type === 'track'}
@@ -77,13 +84,15 @@
 					I am currently listening to a podcast
 				{/if}
 			</h2>
-		{:else}
+		{:else if mostRecentTrack}
 			<h2>
 				I was listening to:
 				<div class="py-2">
 					<SpotifyEmbed spotifyLink={mostRecentTrack?.track.id} height={'156'} />
 				</div>
 			</h2>
+		{:else}
+			Loading...
 		{/if}
 	</div>
 

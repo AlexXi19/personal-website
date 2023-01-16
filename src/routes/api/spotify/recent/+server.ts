@@ -11,7 +11,12 @@ export async function GET() {
 	]);
 
 	return json({
-		currentTrack,
-		previousTracks
+		headers: {
+			'cache-control': 'public, max-age=240' // 4 mins
+		},
+		body: {
+			currentTrack,
+			previousTracks
+		}
 	});
 }

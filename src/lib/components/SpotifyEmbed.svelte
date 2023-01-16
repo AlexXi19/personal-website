@@ -6,6 +6,7 @@
 	export let width: string = '100%';
 	export let height: string | null = null;
 	export let theme = '';
+	export let broswer = '';
 </script>
 
 <!-- <GeneralObserver {height} {width}> -->
