@@ -39,7 +39,6 @@
 	"type": "module",
 	"dependencies": {
 		"@supabase/supabase-js": "^1.35.6",
-		"query-string": "^7.1.1",
 		"spotify-web-api-node": "^4.0.0"
 	}
 }
