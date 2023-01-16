@@ -1,8 +1,6 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-
 	import '../app.css';
-	import { fly, slide } from 'svelte/transition';
+	import { fly } from 'svelte/transition';
 	import { Icon, Menu, X } from 'svelte-hero-icons';
 	let isOpen = false;
 </script>
@@ -25,7 +23,6 @@
 		<ul class="mt-20" on:click={() => (isOpen = !isOpen)}>
 			<li class="relative">
 				<a
-					data-sveltekit-prefetch
 					class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out"
 					href="/"
 					data-mdb-ripple="true"
@@ -54,7 +51,14 @@
 			</li> -->
 			<li class="relative">
 				<a
-					data-sveltekit-prefetch
+					class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out"
+					href="/recs"
+					data-mdb-ripple="true"
+					data-mdb-ripple-color="dark">Reading List</a
+				>
+			</li>
+			<li class="relative">
+				<a
 					class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out"
 					href="/work"
 					data-mdb-ripple="true"
@@ -63,7 +67,6 @@
 			</li>
 			<li class="relative">
 				<a
-					data-sveltekit-prefetch
 					class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out"
 					href="/blog"
 					data-mdb-ripple="true"
@@ -72,16 +75,6 @@
 			</li>
 			<li class="relative">
 				<a
-					data-sveltekit-prefetch
-					class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out"
-					href="/recs"
-					data-mdb-ripple="true"
-					data-mdb-ripple-color="dark">Software Recs</a
-				>
-			</li>
-			<li class="relative">
-				<a
-					data-sveltekit-prefetch
 					class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out"
 					href="/music"
 					data-mdb-ripple="true"
@@ -90,12 +83,12 @@
 			</li>
 			<li class="relative">
 				<a
-					data-sveltekit-prefetch
 					class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out"
 					href="/recs-other"
 					data-mdb-ripple="true"
-					data-mdb-ripple-color="dark">Fun Recs</a
-				>
+					data-mdb-ripple-color="dark"
+					>Life
+				</a>
 			</li>
 		</ul>
 	</div>

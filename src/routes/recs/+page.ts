@@ -2,7 +2,7 @@ import { getRecs } from '$lib/utils/recs';
 import type { Load } from '@sveltejs/kit';
 
 export const load: Load = async ({ url }) => {
-	const recs = await getRecs();
+	const recs = await getRecs(0, 1000);
 	return {
 		recs
 	};
