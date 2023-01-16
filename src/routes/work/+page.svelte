@@ -1,7 +1,6 @@
 <script lang="ts">
 	import SubPageLayout from '$lib/components/SubPageLayout.svelte';
 	import Work from '$lib/components/Work.svelte';
-	export const prerender = true;
 </script>
 
 <SubPageLayout title="What I'm working on:">

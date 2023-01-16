@@ -6,10 +6,10 @@ export const load: ServerLoad = async ({ params, setHeaders }) => {
 	const content = post.default;
 
 	// 2 days
-	setHeaders({
-		age: '172800',
-		'cache-control': 'public, max-age=172800'
-	});
+	// setHeaders({
+	// 	age: '172800',
+	// 	'cache-control': 'public, max-age=172800'
+	// });
 
 	return {
 		content,
@@ -17,3 +17,5 @@ export const load: ServerLoad = async ({ params, setHeaders }) => {
 		date
 	};
 };
+
+export const prerender = 'auto';
