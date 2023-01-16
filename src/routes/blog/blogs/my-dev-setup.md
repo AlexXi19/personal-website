@@ -8,25 +8,27 @@ live: false
 # My Dev Setup
 
 ## Terminal
+
 Alacritty
 
 ## Shell
-zsh 
+
+zsh
 
 ### Extensions
+
 https://github.com/zsh-users/zsh-autosuggestions
 
-## Text Editor 
-Neovim 
+## Text Editor
+
+Neovim
 
 - https://github.com/nvim-lua/kickstart.nvim
 
-### Extensions 
+### Extensions
 
-## Other 
+## Other
 
-### Raycast 
+### Raycast
 
-### Karabiner 
-
-
+### Karabiner
