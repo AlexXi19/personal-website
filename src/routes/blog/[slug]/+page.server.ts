@@ -1,6 +1,6 @@
-import type { ServerLoad } from '@sveltejs/kit';
+import type { Load } from '@sveltejs/kit';
 
-export const load: ServerLoad = async ({ params, setHeaders }) => {
+export const load: Load = async ({ params }) => {
 	const post = await import(`../blogs/${params.slug}.md`);
 	const { title, date } = post.metadata;
 	const content = post.default;
