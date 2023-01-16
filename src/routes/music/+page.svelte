@@ -1,8 +1,5 @@
 <script lang="ts">
-	import ArtistCard from '$lib/components/ArtistCard.svelte';
 	import MusicGallery from '$lib/components/MusicGallery.svelte';
-	import SongCard from '$lib/components/SongCard.svelte';
-	import SpotifyEmbed from '$lib/components/SpotifyEmbed.svelte';
 
 	interface TracksArtists {
 		tracks: SpotifyApi.TrackObjectFull[];

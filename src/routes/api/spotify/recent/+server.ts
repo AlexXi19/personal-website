@@ -1,5 +1,3 @@
-import { supabase } from '$lib/supabase';
-import type { definitions } from '$lib/types/supabase';
 import { getCurrentTrack, getPreviousTracks } from '$lib/utils/spotify';
 import { json } from '@sveltejs/kit';
 

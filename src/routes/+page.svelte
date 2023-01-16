@@ -8,7 +8,7 @@
 	import SpotifyEmbed from '$lib/components/SpotifyEmbed.svelte';
 	import { onMount } from 'svelte';
 	let currentTrack: SpotifyApi.CurrentlyPlayingResponse | null = null;
-	let mostRecentTrack: SpotifyApi.PlayHistoryObject[] | null = null;
+	let mostRecentTrack: SpotifyApi.PlayHistoryObject | null = null;
 
 	onMount(async () => {
 		const res = await fetch(`${window.location.href}api/spotify/recent`);

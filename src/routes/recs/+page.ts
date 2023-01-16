@@ -1,7 +1,7 @@
 import { getRecs } from '$lib/utils/recs';
 import type { Load } from '@sveltejs/kit';
 
-export const load: Load = async ({ url, setHeaders }) => {
+export const load: Load = async ({ setHeaders }) => {
 	const recs = await getRecs(0, 1000);
 
 	setHeaders({
