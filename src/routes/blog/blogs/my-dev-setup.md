@@ -7,4 +7,26 @@ live: false
 
 # My Dev Setup
 
-TODO:
+## Terminal
+Alacritty
+
+## Shell
+zsh 
+
+### Extensions
+https://github.com/zsh-users/zsh-autosuggestions
+
+## Text Editor 
+Neovim 
+
+- https://github.com/nvim-lua/kickstart.nvim
+
+### Extensions 
+
+## Other 
+
+### Raycast 
+
+### Karabiner 
+
+

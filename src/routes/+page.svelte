@@ -61,9 +61,9 @@
 	</p>
 	<p class="py-2">
 		In my free time, I like to browse around and learn about software engineering, here are
-		<a class="text-blue-400" href="/work" data-sveltekit-prefetch>some things I'm working on</a>
+		<a class="text-blue-400" href="/work">some things I'm working on</a>
 		and
-		<a class="text-blue-400" href="/recs" data-sveltekit-prefetch>some things that I like</a>.
+		<a class="text-blue-400" href="/recs">some things that I'm reading</a>.
 	</p>
 	<div class="pt-2 font-bold">
 		{#if currentTrack}
