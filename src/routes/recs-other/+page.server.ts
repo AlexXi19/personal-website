@@ -1,7 +1,7 @@
 import { getOtherRecs } from '$lib/utils/recs';
-import type { Load } from '@sveltejs/kit';
+import type { ServerLoad } from '@sveltejs/kit';
 
-export const load: Load = async ({ setHeaders }) => {
+export const load: ServerLoad = async ({ setHeaders }) => {
 	const recs = await getOtherRecs();
 
 	setHeaders({
