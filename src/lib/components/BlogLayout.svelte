@@ -9,7 +9,7 @@
 
 	<div>
 		<article>
-			<div class="flex flex-row justify-between">
+			<div class="flex flex-row items-center justify-between">
 				<p class="py-2">Published: {date}</p>
 				<a href="/blog">View all blog posts</a>
 			</div>
