@@ -2,28 +2,40 @@
 title: My Dev Setup
 date: '2022/12/3'
 layout: blog
-live: false
+live: true
 ---
 
 # My Dev Setup
 
-[Dot files](https://github.com/AlexXi19/dot-files)
+## [Dot files](https://github.com/AlexXi19/dot-files)
 
-<p>
-<script src="https://asciinema.org/a/552426.js" id="asciicast-552426" async data-autoplay="true" data-size="big"></script>
-</p>
+ <style>
+.embed-container {
+    position: relative;
+    padding-bottom: 67.25%;
+    height: 0; overflow: hidden;
+    max-width: 100%; height: auto;
+}
+.embed-container iframe {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+}
+</style>
+<div autoplay class='embed-container'>
+<iframe title="dev-setup" src="https://asciinema.org/a/552426/iframe?autoplay=1&loop=1">
+</iframe>
+</div>
 
 ### Raycast
 
 Used mainly for window management and app switching.
 
-## Terminal
+### Terminal & Shell
 
-iTerm
-
-## Shell
-
-zsh
+iTerm & Zsh
 
 ### Extensions
 
@@ -35,7 +47,7 @@ https://github.com/wting/autojump
 
 https://github.com/tmux/tmux/wiki
 
-## Text Editor
+### Text Editor
 
 Neovim or VsCode (still evaluating)
 

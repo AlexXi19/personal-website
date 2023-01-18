@@ -13,7 +13,6 @@
 	onMount(async () => {
 		const res = await fetch(`${window.location.href}api/spotify/recent`);
 		const data = (await res.json()).body;
-		console.log(data);
 		currentTrack = data.currentTrack;
 		mostRecentTrack = data.previousTracks?.[0];
 	});
