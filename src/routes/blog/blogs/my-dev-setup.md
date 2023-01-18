@@ -51,6 +51,8 @@ https://github.com/tmux/tmux/wiki
 
 Neovim or VsCode (still evaluating)
 
+**With vim!!**
+
 ### Karabiner
 
 Map ctrl + (hjkl) to (left, down up right) for selecting dropdown lists and autocomplete
