@@ -77,6 +77,10 @@
 		background-color: #f8f8f8;
 	}
 
+	div :global(strong) {
+		font-weight: 720;
+	}
+
 	div :global(ul) {
 		list-style-type: circle;
 		margin-left: 10px;
