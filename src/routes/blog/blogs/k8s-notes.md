@@ -45,3 +45,7 @@ Pull requests:
 https://github.com/tensorchord/envd-server/pull/170
 
 https://github.com/tensorchord/envd/pull/1416
+
+## Service Discovery
+
+https://www.densify.com/kubernetes-autoscaling/kubernetes-service-discovery
