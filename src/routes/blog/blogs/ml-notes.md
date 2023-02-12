@@ -60,6 +60,16 @@ Machine Learning Service load balancing is better based on the request number co
 
 [Nvidia Triton](https://github.com/triton-inference-server/server)
 
+Features: 
+- High performance serving framework
+- Multi framework backend support 
+- Cloud Native 
+  - Good kubernetes support
+  - Easy to scale
+- Model orchestration with management service.
+ 
+
+
 ## Notes
 
 ## Random Thoughts
