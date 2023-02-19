@@ -60,18 +60,27 @@ Machine Learning Service load balancing is better based on the request number co
 
 [Nvidia Triton](https://github.com/triton-inference-server/server)
 
-Features: 
+Features:
+
 - High performance serving framework
-- Multi framework backend support 
-- Cloud Native 
+- Multi framework backend support
+- Cloud Native
   - Good kubernetes support
   - Easy to scale
 - Model orchestration with management service.
- 
-
 
 ## Notes
 
 ## Random Thoughts
 
 # ML Ops
+
+### MLOps validation server
+
+The purpose of this section is for notes related to building a model testing and validation server to provide more confidence for the model deployment process.
+
+#### Problems to solve:
+
+- Lots of back and forth between the ML team and the Serving team to deploy the models
+  - Serving team needs to _put the model together_ for deployment
+  - Serving team needs to manually test the model to gain confidence for model deployment
