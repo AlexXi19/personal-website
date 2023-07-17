@@ -1,6 +1,7 @@
 <script lang="ts">
 	export let data: any;
-	const post = data.content;
+	type C = $$Generic<typeof SvelteComponentTyped<any, any, any>>;
+	const component = data.component as unknown as C;
 </script>
 
-<svelte:component this={data.content} />
+<svelte:component this={component} />

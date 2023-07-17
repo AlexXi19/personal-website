@@ -5,13 +5,19 @@
 	import vercelLogo from '$lib/assets/vercel-logotype-dark.png';
 	import myPhoto from '$lib/assets/my-photo.jpeg';
 	import { daysSinceWebsiteStart } from '$lib/utils/random';
-	import type { ILoadPageData } from './+page';
 	import SpotifyEmbed from '$lib/components/SpotifyEmbed.svelte';
-	export let data: ILoadPageData;
+	import { onMount } from 'svelte';
+	let currentTrack: SpotifyApi.CurrentlyPlayingResponse | null = null;
+	let mostRecentTrack: SpotifyApi.PlayHistoryObject | null = null;
+
+	onMount(async () => {
+		const res = await fetch(`${window.location.href}api/spotify/recent`);
+		const data = (await res.json()).body;
+		currentTrack = data.currentTrack;
+		mostRecentTrack = data.previousTracks?.[0];
+	});
 
 	let daysSinceStart = daysSinceWebsiteStart();
-	let currentTrack = data.currentTrack;
-	let mostRecentTrack = data.previousTracks?.[0];
 </script>
 
 <svelte:head>
@@ -30,56 +36,66 @@
 			personal website
 		</a>
 	</h2>
+	This website has been running for {daysSinceStart} days
+
 	<img src={myPhoto} alt="Me" class="mt-2 w-60 rounded-md shadow-lg" />
-	<h1 class="font-bold text-xl mt-4">About Me</h1>
-	<h2>
-		My name is Alex Xi and I am currently a senior studying Computer Science and Economics at UC
-		Berkeley. I've had experience building fullstack applications for multiple startups and data
-		pipelines for forecasting at Amazon Alexa. My current interests are in data related systems
-		(databases, big data infrastructure and ML/AI platform) and large scale (service oriented)
-		applications. In my free time, I like to browse around and learn about software engineering,
-		here are
-		<a class="text-blue-400" href="/recs" data-sveltekit-prefetch>some things that I like</a>.
-	</h2>
-	<h2 class="mt-4">
-		This website has been running for <span class="font-bold">{daysSinceStart}</span> days.
-	</h2>
-	{#if currentTrack}
-		<h2>
-			{#if currentTrack.currently_playing_type === 'track'}
-				I am currently listening to:
-				<div class="py-2">
-					<SpotifyEmbed spotifyLink={currentTrack?.item?.id} height={'156'} />
-				</div>
-			{:else if currentTrack.currently_playing_type === 'episode'}
-				I am currently listening to a podcast
-			{/if}
-		</h2>
-	{:else}
-		<h2>
-			I was listening to:
-			<div class="py-2">
-				<SpotifyEmbed spotifyLink={mostRecentTrack?.track.id} height={'156'} />
-			</div>
-		</h2>
-	{/if}
 
 	<h2 class="flex md:flex-row flex-col gap-1">
-		Connect with me on:
+		Connect with me on
 		<a
-			class="text-blue-400 h-5 md:pl-3"
+			class="text-blue-400 h-5 md:pl-2"
 			href="https://www.linkedin.com/in/alex-xi-9a6527214/"
 			target="”_blank”"
 		>
 			Linkedin</a
 		>
-		<a class="text-blue-400 h-5 md:pl-3" href="https://github.com/AlexXi19" target="_blank"
+		<a class="text-blue-400 h-5 md:pl-2" href="https://github.com/AlexXi19" target="_blank"
 			>GitHub</a
 		>
-		<a class="text-blue-400 h-5 md:pl-3" href="https://twitter.com/alex2001314" target="_blank"
+		<a class="text-blue-400 h-5 md:pl-2" href="https://twitter.com/alex2001314" target="_blank"
 			>Twitter</a
 		>
 	</h2>
+
+	<h1 class="font-bold text-xl mt-4">About Me</h1>
+	<p>
+		My name is Alex Xi and I just graduated from UC Berkeley with majors in Computer Science and
+		Economics at UC Berkeley. I've had experience building fullstack applications for multiple
+		startups and data pipelines for forecasting at Amazon Alexa. My current interests are in data
+		related systems (ML/AI infra, database systems, and big data infrastructure) and large scale
+		(microservice) applications.
+	</p>
+	<p class="py-2">
+		In my free time, I like to browse around and learn about software engineering, here are
+		<a class="text-blue-400" href="/work">some things I'm working on</a>
+		and
+		<a class="text-blue-400" href="/recs">some things that I'm reading</a>.
+	</p>
+	<div class="pt-2 font-bold h-[170px]">
+		{#if currentTrack}
+			<h2>
+				{#if currentTrack.currently_playing_type === 'track'}
+					I am currently listening to:
+					<div class="py-2">
+						<SpotifyEmbed spotifyLink={currentTrack?.item?.id} height={'156'} />
+					</div>
+				{:else if currentTrack.currently_playing_type === 'episode'}
+					I am currently listening to a podcast
+				{/if}
+			</h2>
+		{:else if mostRecentTrack}
+			<h2>
+				I was listening to:
+				<div class="py-2">
+					<SpotifyEmbed spotifyLink={mostRecentTrack?.track.id} height={'156'} />
+				</div>
+			</h2>
+		{:else}
+			Loading...
+		{/if}
+	</div>
+
+	<br />
 	<h2 class="flex flex-col md:flex-row md:items-center items-start gap-[10px]">
 		Built with:
 		<a href="https://svelte.dev/" target="_blank">

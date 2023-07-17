@@ -5,7 +5,7 @@ export interface ILoadSpotifyPageData {
 	authUrl: string;
 }
 
-export const load: Load = async ({ params }): Promise<ILoadSpotifyPageData> => {
+export const load: Load = async (): Promise<ILoadSpotifyPageData> => {
 	const authUrl = await getAuthUrl();
 
 	return {

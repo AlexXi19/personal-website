@@ -1,6 +1,5 @@
 <script lang="ts">
 	import ArtistCard from '$lib/components/ArtistCard.svelte';
-	import SongCard from '$lib/components/SongCard.svelte';
 	import SpotifyEmbed from '$lib/components/SpotifyEmbed.svelte';
 
 	interface TracksArtists {

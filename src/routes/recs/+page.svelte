@@ -1,12 +1,13 @@
 <script lang="ts">
 	import RecList from '$lib/components/RecList.svelte';
-	import type { definitions } from '$lib/types/supabase';
+	import SubPageLayout from '$lib/components/SubPageLayout.svelte';
+	import type { Read } from '$lib/utils/recs';
 
 	export let data;
-	export let recs: definitions['recs'][] = data.recs;
-	export let header = 'Software things I like:';
+	export let recs: Read[] = data.recs;
+	export let header = 'My Reading List';
 </script>
 
-<div class=" p-12 pt-24 md:p-24">
+<SubPageLayout title="">
 	<RecList {recs} {header} />
-</div>
+</SubPageLayout>

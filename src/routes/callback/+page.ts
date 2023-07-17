@@ -1,4 +1,4 @@
-import { error, redirect } from '@sveltejs/kit';
+import { redirect } from '@sveltejs/kit';
 import type { Load } from '@sveltejs/kit';
 import { spotifyApi } from '$lib/spotify';
 import { upsertToken } from '$lib/utils/tokens';

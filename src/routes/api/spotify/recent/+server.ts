@@ -1,5 +1,3 @@
-import { supabase } from '$lib/supabase';
-import type { definitions } from '$lib/types/supabase';
 import { getCurrentTrack, getPreviousTracks } from '$lib/utils/spotify';
 import { json } from '@sveltejs/kit';
 
@@ -11,7 +9,12 @@ export async function GET() {
 	]);
 
 	return json({
-		currentTrack,
-		previousTracks
+		headers: {
+			'cache-control': 'public, max-age=240' // 4 mins
+		},
+		body: {
+			currentTrack,
+			previousTracks
+		}
 	});
 }

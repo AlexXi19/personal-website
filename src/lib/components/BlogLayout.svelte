@@ -9,7 +9,7 @@
 
 	<div>
 		<article>
-			<div class="flex flex-row justify-between">
+			<div class="flex flex-row items-center justify-between">
 				<p class="py-2">Published: {date}</p>
 				<a href="/blog">View all blog posts</a>
 			</div>
@@ -75,6 +75,10 @@
 	div :global(code) {
 		font-family: monospace;
 		background-color: #f8f8f8;
+	}
+
+	div :global(strong) {
+		font-weight: 720;
 	}
 
 	div :global(ul) {
