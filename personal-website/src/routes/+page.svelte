@@ -1,8 +1,7 @@
 <script lang="ts">
 	import svelteLogo from '$lib/assets/svelte-logo.svg';
-	import supabaseLogo from '$lib/assets/supabase-logo-wordmark--light.png';
-	import tailwindLogo from '$lib/assets/Tailwind-CSS-logo.png';
-	import vercelLogo from '$lib/assets/vercel-logotype-dark.png';
+	import kubernetesLogo from '$lib/assets/kubernetes-logo.svg';
+	import raspberryLogo from '$lib/assets/raspberry-logo.svg';
 	import myPhoto from '$lib/assets/my-photo.jpeg';
 	import { daysSinceWebsiteStart } from '$lib/utils/random';
 	import SpotifyEmbed from '$lib/components/SpotifyEmbed.svelte';
@@ -96,19 +95,21 @@
 	</div>
 
 	<br />
-	<h2 class="flex flex-col md:flex-row md:items-center items-start gap-[10px]">
+	<h2 class="flex flex-col gap-[10px]">
+    <div class="flex flex-row items-center">
 		Built with:
 		<a href="https://svelte.dev/" target="_blank">
 			<img src={svelteLogo} alt="Svelte" class="md:pb-0.5 h-5 md:pl-3" />
 		</a>
-		<a href="https://supabase.com/" target="_blank">
-			<img src={supabaseLogo} alt="Supabase" class="md:pb-0.5 h-5 md:pl-3" />
+    </div>
+    <div class="flex flex-row items-center gap-1">
+        Hosted on:
+		<a href="https://kubernetes.io/" target="_blank">
+			<img src={kubernetesLogo} alt="Svelte" class="md:pb-0.5 h-5 md:pl-3" />
 		</a>
-		<a href="https://tailwindcss.com/" target="_blank">
-			<img src={tailwindLogo} alt="Tailwind" class="md:pb-0.5 h-[13px] md:pl-3" />
+		<a href="https://www.raspberrypi.com/" target="_blank">
+			<img src={raspberryLogo} alt="Vercel" class="md:pb-0.5 h-7 md:pl-3" />
 		</a>
-		<a href="https://vercel.com/" target="_blank">
-			<img src={vercelLogo} alt="Vercel" class="md:pb-0.5 h-[15px] w-[65px] md:pl-3" />
-		</a>
+    </div>
 	</h2>
 </div>

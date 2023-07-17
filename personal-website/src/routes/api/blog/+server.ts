@@ -10,7 +10,7 @@ export const GET = async () => {
 	return json(sortedPosts);
 };
 
-export const fetchMarkdownPosts = async () => {
+const fetchMarkdownPosts = async () => {
 	const allPostFiles = import.meta.glob('/src/routes/blog/blogs/*.md');
 	const iterablePostFiles = Object.entries(allPostFiles);
 
