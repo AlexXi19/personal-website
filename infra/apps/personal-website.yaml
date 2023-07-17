@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: personal-website-deployment
+spec:
+  selector:
+    matchLabels:
+      app: personal-website
+  replicas: 6
+  template:
+    metadata:
+      labels:
+        app: personal-website
+    spec:
+      containers:
+      - name: personal-website
+        image: alexxi19/personal-website:latest
+        imagePullPolicy: "Always"
+        ports:
+        - containerPort: 3000
+        env: 
+        - name: PUBLIC_SPOTIPY_REDIRECT_URI
+          value: "https://www.alexhxi.com/callback" # Updated 331d ago
+        - name: PUBLIC_SVELTE_APP_SUPABASE_URL
+          value: "https://tbsnhkewuwyfxowgazvr.supabase.co" # Added 332d ago
+        - name: PUBLIC_READWISE_TOKEN
+          value: Kgowhs51Iyg1rzqeO0GOYlsGafdGDX7RZDLvNvmVhbn8AcjPV6
+        - name: PUBLIC_SPOTIFY_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: personal-website-secret
+              key: PUBLIC_SPOTIFY_USERNAME
+        - name: PUBLIC_SPOTIPY_CLIENT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: personal-website-secret
+              key: PUBLIC_SPOTIPY_CLIENT_SECRET
+        - name: PUBLIC_SPOTIPY_CLIENT_ID
+          valueFrom:
+            secretKeyRef:
+              name: personal-website-secret
+              key: PUBLIC_SPOTIPY_CLIENT_ID
+        - name: PUBLIC_SPOTIFY_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: personal-website-secret
+              key: PUBLIC_SPOTIFY_TOKEN
+        - name: PUBLIC_SVELTE_APP_SUPABASE_ANON_KEY
+          valueFrom:
+            secretKeyRef:
+              name: personal-website-secret
+              key: PUBLIC_SVELTE_APP_SUPABASE_ANON_KEY
+      - name: health-check-pinger
+        image: curlimages/curl:latest
+        args:
+        - /bin/sh
+        - -c
+        - |
+          while true; do
+            sleep 1200
+            curl localhost:3000/api/spotify/refresh-token
+          done
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: personal-website
+spec:
+  selector:
+    app: personal-website
+  ports:
+  - protocol: TCP
+    port: 3000
+    targetPort: 3000
