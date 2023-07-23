@@ -52,5 +52,25 @@ spec:
             name: personal-website
             port:
               number: 3000
+  - host: "memo.alexxi.dev"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: memos-service
+            port:
+              number: 5230
+  - host: "notes.alexxi.dev"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: hedgedoc
+            port:
+              number: 3000
 
 
