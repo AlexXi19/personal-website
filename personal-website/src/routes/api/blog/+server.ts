@@ -1,3 +1,4 @@
+import { BlogSchema, type Catalog } from '$lib/types/post';
 import { json } from '@sveltejs/kit';
 
 export const GET = async () => {
@@ -10,13 +11,14 @@ export const GET = async () => {
 	return json(sortedPosts);
 };
 
-const fetchMarkdownPosts = async () => {
+async function fetchMarkdownPosts(): Promise<Catalog[]> {
 	const allPostFiles = import.meta.glob('/src/routes/blog/blogs/*.md');
 	const iterablePostFiles = Object.entries(allPostFiles);
 
 	const allPosts = await Promise.all(
 		iterablePostFiles.map(async ([path, resolver]) => {
-			const { metadata } = (await resolver()) as any;
+			const resolved = await resolver();
+			const { metadata } = BlogSchema.parse(resolved);
 
 			return {
 				meta: metadata,
@@ -26,4 +28,4 @@ const fetchMarkdownPosts = async () => {
 	);
 
 	return allPosts;
-};
+}

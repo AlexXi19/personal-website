@@ -96,20 +96,20 @@
 
 	<br />
 	<h2 class="flex flex-col gap-[10px]">
-    <div class="flex flex-row items-center">
-		Built with:
-		<a href="https://svelte.dev/" target="_blank">
-			<img src={svelteLogo} alt="Svelte" class="md:pb-0.5 h-5 md:pl-3" />
-		</a>
-    </div>
-    <div class="flex flex-row items-center gap-1">
-        Hosted on:
-		<a href="https://kubernetes.io/" target="_blank">
-			<img src={kubernetesLogo} alt="Svelte" class="md:pb-0.5 h-5 md:pl-3" />
-		</a>
-		<a href="https://www.raspberrypi.com/" target="_blank">
-			<img src={raspberryLogo} alt="Vercel" class="md:pb-0.5 h-7 md:pl-3" />
-		</a>
-    </div>
+		<div class="flex flex-row items-center">
+			Built with:
+			<a href="https://svelte.dev/" target="_blank">
+				<img src={svelteLogo} alt="Svelte" class="md:pb-0.5 h-5 md:pl-3" />
+			</a>
+		</div>
+		<div class="flex flex-row items-center gap-1">
+			Hosted on:
+			<a href="https://kubernetes.io/" target="_blank">
+				<img src={kubernetesLogo} alt="Svelte" class="md:pb-0.5 h-5 md:pl-3" />
+			</a>
+			<a href="https://www.raspberrypi.com/" target="_blank">
+				<img src={raspberryLogo} alt="Vercel" class="md:pb-0.5 h-7 md:pl-3" />
+			</a>
+		</div>
 	</h2>
 </div>

@@ -23,28 +23,31 @@ spec:
           value: "https://www.alexhxi.com/callback" # Updated 331d ago
         - name: PUBLIC_SVELTE_APP_SUPABASE_URL
           value: "https://tbsnhkewuwyfxowgazvr.supabase.co" # Added 332d ago
-        - name: PUBLIC_READWISE_TOKEN
-          value: Kgowhs51Iyg1rzqeO0GOYlsGafdGDX7RZDLvNvmVhbn8AcjPV6
+        - name: READWISE_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: personal-website-secret
+              key: READWISE_TOKEN
         - name: PUBLIC_SPOTIFY_USERNAME
           valueFrom:
             secretKeyRef:
               name: personal-website-secret
               key: PUBLIC_SPOTIFY_USERNAME
-        - name: PUBLIC_SPOTIPY_CLIENT_SECRET
+        - name: SPOTIPY_CLIENT_SECRET
           valueFrom:
             secretKeyRef:
               name: personal-website-secret
-              key: PUBLIC_SPOTIPY_CLIENT_SECRET
+              key: SPOTIPY_CLIENT_SECRET
         - name: PUBLIC_SPOTIPY_CLIENT_ID
           valueFrom:
             secretKeyRef:
               name: personal-website-secret
               key: PUBLIC_SPOTIPY_CLIENT_ID
-        - name: PUBLIC_SPOTIFY_TOKEN
+        - name: SPOTIFY_TOKEN
           valueFrom:
             secretKeyRef:
               name: personal-website-secret
-              key: PUBLIC_SPOTIFY_TOKEN
+              key: SPOTIFY_TOKEN
         - name: PUBLIC_SVELTE_APP_SUPABASE_ANON_KEY
           valueFrom:
             secretKeyRef:

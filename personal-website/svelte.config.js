@@ -6,7 +6,7 @@ import { mdsvex } from 'mdsvex';
 const config = {
 	extensions: ['.svelte', '.md'],
 	kit: {
-        adapter: adapter({ out: 'build' })
+		adapter: adapter({ out: 'build' })
 	},
 	preprocess: [
 		sveltePreprocess({

@@ -1,13 +1,21 @@
-export interface BlogPost {
-	title: string;
-	date: string;
-	content: string;
-}
+import { z } from 'zod';
 
-export interface Catalog {
-	meta: {
-		title: string;
-		date: string;
-	};
-	path: string;
-}
+export const BlogSchema = z.object({
+	metadata: z.object({
+		title: z.string(),
+		date: z.string(),
+		live: z.boolean().optional()
+	}),
+	default: z.any()
+});
+
+export const CatalogSchema = z.object({
+	meta: z.object({
+		title: z.string(),
+		date: z.string(),
+		live: z.boolean().optional()
+	}),
+	path: z.string()
+});
+
+export type Catalog = z.infer<typeof CatalogSchema>;

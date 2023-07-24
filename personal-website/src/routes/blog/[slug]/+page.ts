@@ -1,7 +1,9 @@
+import { BlogSchema } from '$lib/types/post';
 import type { Load } from '@sveltejs/kit';
 
 export const load: Load = async ({ params }) => {
-	const post = await import(`../blogs/${params.slug}.md`);
+	const post = BlogSchema.parse(await import(`../blogs/${params.slug}.md`));
+
 	const { title, date } = post.metadata;
 
 	// 2 days

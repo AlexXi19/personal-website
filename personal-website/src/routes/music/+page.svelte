@@ -1,12 +1,7 @@
 <script lang="ts">
 	import MusicGallery from '$lib/components/MusicGallery.svelte';
 
-	interface TracksArtists {
-		tracks: SpotifyApi.TrackObjectFull[];
-		artists: SpotifyApi.ArtistObjectFull[];
-	}
-
-	export let data: TracksArtists;
+	export let data;
 </script>
 
 <svelte:head>

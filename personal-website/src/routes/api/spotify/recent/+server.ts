@@ -1,7 +1,6 @@
 import { getCurrentTrack, getPreviousTracks } from '$lib/utils/spotify';
 import { json } from '@sveltejs/kit';
 
-/** @type {import('./$types').RequestHandler} */
 export async function GET() {
 	const [currentTrack, previousTracks] = await Promise.all([
 		getCurrentTrack(),

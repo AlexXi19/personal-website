@@ -1,6 +1,6 @@
+import { READWISE_TOKEN } from '$env/static/private';
 import { supabase } from '$lib/supabase';
 import type { definitions } from '$lib/types/supabase';
-import { PUBLIC_READWISE_TOKEN } from '$env/static/public'
 
 interface ReadwiseBookResponse {
 	count: number;
@@ -52,7 +52,7 @@ export async function getReadwiseReads(opts: ReadwiseSearchParams): Promise<Read
 
 	const res = await fetch('https://readwise.io/api/v2/books?' + searchParams, {
 		headers: {
-			Authorization: 'Token ' + PUBLIC_READWISE_TOKEN
+			Authorization: 'Token ' + READWISE_TOKEN
 		}
 	});
 	const data: ReadwiseBookResponse = await res.json();
