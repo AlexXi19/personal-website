@@ -23,7 +23,8 @@ env:
   CMD_ALLOW_EMAIL_REGISTER: "true"
   CMD_CSP_ENABLE: "false"
   CMD_ALLOW_ANONYMOUS: "false"
-  CMD_HSTS_ENABLE: "true"
+  CMD_GITHUB_CLIENTID: <redacted>
+  CMD_GITHUB_CLIENTSECRET: <redacted>
 
 service:
   port:
