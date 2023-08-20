@@ -6,10 +6,10 @@ export const load: ServerLoad = async ({ setHeaders }) => {
 	const { artists } = await getTopArtists(10);
 
 	// 2 days
-	setHeaders({
-		age: '172800',
-		'cache-control': 'public, max-age=172800'
-	});
+	// setHeaders({
+	// 	age: '172800',
+	// 	'cache-control': 'public, max-age=172800'
+	// });
 
 	return {
 		tracks,

@@ -4,13 +4,13 @@ import { z } from 'zod';
 
 export const load: Load = async ({ fetch, setHeaders }) => {
 	const response = await fetch(`/api/blog`);
-	const posts  = z.array(CatalogSchema).parse(await response.json());
+	const posts = z.array(CatalogSchema).parse(await response.json());
 	const livePosts = posts.filter((post) => post.meta.live !== false);
 
-	setHeaders({
-		age: '86400',
-		'cache-control': 'public, max-age=86400'
-	});
+	// setHeaders({
+	// 	age: '86400',
+	// 	'cache-control': 'public, max-age=86400'
+	// });
 
 	return {
 		posts: livePosts

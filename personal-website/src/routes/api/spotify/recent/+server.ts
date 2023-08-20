@@ -8,9 +8,9 @@ export async function GET() {
 	]);
 
 	return json({
-		headers: {
-			'cache-control': 'public, max-age=240' // 4 mins
-		},
+		// headers: {
+		// 	'cache-control': 'public, max-age=240' // 4 mins
+		// },
 		body: {
 			currentTrack,
 			previousTracks
