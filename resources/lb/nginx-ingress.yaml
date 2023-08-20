@@ -62,7 +62,7 @@ spec:
             name: memos-service
             port:
               number: 5230
-  - host: "memo.alexxi.dev"
+  - host: "notes.alexxi.dev"
     http:
       paths:
       - path: /
@@ -72,5 +72,16 @@ spec:
             name: hedgedoc
             port:
               number: 3000
+  - host: "dashboard.alexxi.dev"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: grafana
+            port:
+              number: 3000
+
 
 
