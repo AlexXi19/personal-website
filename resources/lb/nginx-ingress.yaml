@@ -62,7 +62,7 @@ spec:
             name: memos-service
             port:
               number: 5230
-  - host: "notes.alexxi.dev"
+  - host: "memo.alexxi.dev"
     http:
       paths:
       - path: /

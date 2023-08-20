@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: telegraf
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: telegraf
+  template:
+    metadata:
+      labels:
+        app: telegraf
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9125"
+
+    spec:
+      containers:
+      - name: telegraf
+        image: telegraf:latest
+        volumeMounts:
+        - mountPath: /etc/telegraf/
+          name: telegraf-config
+        # Depending on the plugins you enable, you might also need to mount 
+        # other host directories, for instance, /proc, /sys, and docker socket.
+        - mountPath: /proc
+          name: proc
+          readOnly: true
+        - mountPath: /sys
+          name: sys
+          readOnly: true
+      volumes:
+      - name: telegraf-config
+        configMap:
+          name: telegraf-config
+      - name: proc
+        hostPath:
+          path: /proc
+      - name: sys
+        hostPath:
+          path: /sys
+
