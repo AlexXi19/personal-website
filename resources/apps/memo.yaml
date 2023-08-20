@@ -22,9 +22,19 @@ spec:
           mountPath: /var/opt/memos
       volumes:
       - name: memos-data
-        hostPath:
-          path: /home/memo/.memos
-          type: Directory
+        persistentVolumeClaim:
+          claimName: memos-pvc
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: memos-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
 ---
 apiVersion: v1
 kind: Service
