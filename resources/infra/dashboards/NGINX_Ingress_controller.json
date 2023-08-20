@@ -346,7 +346,7 @@
             "type": "prometheus",
             "uid": "c6764c5f-a969-40a2-8ded-a3b78f23f438"
           },
-          "expr": "avg(irate(nginx_ingress_controller_success{controller_pod=~\"$controller\",controller_class=~\"$controller_class\",controller_namespace=~\"$namespace\"}[1m])) K3S_cluster_monitoring.json NGINX_Ingress_controller.json 60",
+          "expr": "avg(irate(nginx_ingress_controller_success{controller_pod=~\"$controller\",controller_class=~\"$controller_class\",controller_namespace=~\"$namespace\"}[1m])) K3S_cluster_monitoring.json NGINX_Ingress_controller.json Personal_Website_Page_Views.json Pi_k3s_Simple_Dashboard.json Request_Handling_Performance.json 60",
           "format": "time_series",
           "instant": false,
           "intervalFactor": 1,
