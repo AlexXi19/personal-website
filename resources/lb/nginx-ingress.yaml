@@ -52,6 +52,16 @@ spec:
             name: personal-website
             port:
               number: 3000
+  - host: "share.alexxi.dev"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: code-share
+            port:
+              number: 8000
   - host: "memo.alexxi.dev"
     http:
       paths:
@@ -82,6 +92,3 @@ spec:
             name: grafana
             port:
               number: 3000
-
-
-

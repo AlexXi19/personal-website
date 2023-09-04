@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: code-share-deployment
+spec:
+  selector:
+    matchLabels:
+      app: code-share
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: code-share
+    spec:
+      containers:
+      - name: code-share
+        image: alexxi19/code-share:latest
+        imagePullPolicy: "Always"
+        ports:
+        - containerPort: 8000
+        env: 
+        - name: HOST
+          value: "https://share.alexxi.dev"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: code-share
+spec:
+  selector:
+    app: code-share
+  ports:
+  - protocol: TCP
+    port: 8000
+    targetPort: 8000

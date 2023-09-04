@@ -68,9 +68,7 @@ export const tokens = pgTable("tokens", {
     mode: "string",
   }).defaultNow(),
   accessToken: text("access_token").notNull(),
-  refreshToken: text("refresh_token")
-    .primaryKey()
-    .notNull(),
+  refreshToken: text("refresh_token").primaryKey().notNull(),
 });
 
 export const readingList = pgTable(
