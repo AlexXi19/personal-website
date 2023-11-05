@@ -1,0 +1,99 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notes-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notes-app
+  template:
+    metadata:
+      labels:
+        app: notes-app
+    spec:
+      volumes:
+      - name: content-volume
+        emptyDir: {}
+      containers:
+      - name: quartz
+        image: alexxi19/quartz:latest
+        imagePullPolicy: "Always"
+        volumeMounts:
+        - name: content-volume
+          mountPath: /usr/src/app/content
+      - name: git-repo-syncer
+        image: alpine/git
+        volumeMounts:
+        - name: content-volume
+          mountPath: /usr/src/app/content
+        env:
+        - name: GIT_SYNC_REPO
+          value: https://github.com/alexxi19/notes.git
+        - name: GIT_SYNC_DEST
+          value: /usr/src/app/content
+        - name: GIT_SYNC_BRANCH
+          value: main
+        - name: GIT_SYNC_WAIT
+          value: "10"
+        - name: GIT_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: git-creds
+              key: username
+        - name: GIT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: git-creds
+              key: password
+        command: ['/bin/sh']
+        args:
+        - '-c'
+        - |
+          # Exit script on error and set pipefail
+          set -e
+          set -o pipefail
+
+          # Configure Git to not prompt for credentials
+          git config --global credential.helper store
+
+          # Add credentials to Git credential store
+          git credential approve <<EOF
+          protocol=https
+          host=github.com
+          username=$GIT_USERNAME
+          password=$GIT_PASSWORD
+          EOF
+
+          # Clone the repository if it doesn't exist
+          if [ ! -d "$GIT_SYNC_DEST/.git" ]; then
+            git clone --branch "$GIT_SYNC_BRANCH" "$GIT_SYNC_REPO" "$GIT_SYNC_DEST"
+          fi
+
+          # Sync loop
+          while true; do
+            cd "$GIT_SYNC_DEST"
+            # Fetching all branches and tags, also prune any deleted refs
+            git fetch --prune --all
+            # Reset the local files to match the fetched branch
+            git reset --hard "origin/$GIT_SYNC_BRANCH"
+            sleep "$GIT_SYNC_WAIT"
+          done
+
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: notes-app-service
+spec:
+  selector:
+    app: notes-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: ClusterIP
+
