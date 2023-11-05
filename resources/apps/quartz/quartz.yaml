@@ -12,6 +12,7 @@ spec:
       labels:
         app: notes-app
     spec:
+      serviceAccountName: restart-deployment-service-account
       volumes:
       - name: content-volume
         emptyDir: {}
@@ -22,6 +23,15 @@ spec:
         volumeMounts:
         - name: content-volume
           mountPath: /usr/src/app/content
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          timeoutSeconds: 1
+          successThreshold: 1
+          failureThreshold: 3
       - name: git-repo-syncer
         image: alpine/git
         volumeMounts:
@@ -35,7 +45,7 @@ spec:
         - name: GIT_SYNC_BRANCH
           value: main
         - name: GIT_SYNC_WAIT
-          value: "10"
+          value: "5"
         - name: GIT_USERNAME
           valueFrom:
             secretKeyRef:
@@ -50,14 +60,11 @@ spec:
         args:
         - '-c'
         - |
-          # Exit script on error and set pipefail
           set -e
           set -o pipefail
 
-          # Configure Git to not prompt for credentials
           git config --global credential.helper store
 
-          # Add credentials to Git credential store
           git credential approve <<EOF
           protocol=https
           host=github.com
@@ -65,20 +72,30 @@ spec:
           password=$GIT_PASSWORD
           EOF
 
-          # Clone the repository if it doesn't exist
           if [ ! -d "$GIT_SYNC_DEST/.git" ]; then
             git clone --branch "$GIT_SYNC_BRANCH" "$GIT_SYNC_REPO" "$GIT_SYNC_DEST"
           fi
 
-          # Sync loop
           while true; do
-            cd "$GIT_SYNC_DEST"
-            # Fetching all branches and tags, also prune any deleted refs
-            git fetch --prune --all
-            # Reset the local files to match the fetched branch
-            git reset --hard "origin/$GIT_SYNC_BRANCH"
-            sleep "$GIT_SYNC_WAIT"
-          done
+              cd "$GIT_SYNC_DEST"
+              git fetch --prune --all
+              LOCAL_COMMIT_ID=$(git rev-parse HEAD)
+              REMOTE_COMMIT_ID=$(git rev-parse "origin/$GIT_SYNC_BRANCH")
+              if [ "$LOCAL_COMMIT_ID" != "$REMOTE_COMMIT_ID" ]; then
+                git reset --hard "origin/$GIT_SYNC_BRANCH"
+                apk --no-cache add curl
+                TOKEN=$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
+                NAMESPACE=$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace)
+                DEPLOYMENT_NAME=notes-app
+                curl -k -X PATCH \
+                  -d "{\"spec\":{\"template\":{\"metadata\":{\"annotations\":{\"date\":\"`date +'%s'`\"}}}}}" \
+                  -H "Authorization: Bearer $(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" \
+                  -H "Content-Type: application/strategic-merge-patch+json" \
+                  -H "Accept: application/json" \
+                  "https://kubernetes.default.svc/apis/apps/v1/namespaces/$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace)/deployments/$DEPLOYMENT_NAME"
+              fi
+              sleep "$GIT_SYNC_WAIT"
+            done
 
 
 
