@@ -19,7 +19,7 @@ secret: {}
 env: 
   puid: "1000"
   pgid: "1000"
-  CMD_DOMAIN: notes.alexxi.dev
+  CMD_DOMAIN: hedgedoc.alexxi.dev
   CMD_ALLOW_EMAIL_REGISTER: "true"
   CMD_CSP_ENABLE: "false"
   CMD_ALLOW_ANONYMOUS: "false"
