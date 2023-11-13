@@ -25,51 +25,53 @@
 	<meta name="description" content="Alex Xi" />
 	<html lang="en" />
 </svelte:head>
-<div class="max-w-4xl  p-12 pt-24 md:p-24 mx-auto font-mono flex flex-col gap-2">
-	<h2 class="font-semibold">
+<div class="bg-black min-h-screen">
+<div
+	class="max-w-4xl  p-12 md:p-12 mx-auto flex flex-col gap-2 text-white font-source-sans-pro font-md text-sm"
+>
+	<h2 class="font-sm">
 		Welcome to Alex Xi's <a
-			class="text-blue-400"
+			class="text-secondary"
 			href="https://github.com/AlexXi19/personal-website"
 			target="_blank"
 		>
-			personal website
+			personal website,
 		</a>
+        this website has been running for {daysSinceStart} days.
 	</h2>
-	This website has been running for {daysSinceStart} days
 
 	<img src={myPhoto} alt="Me" class="mt-2 w-60 rounded-md shadow-lg" />
 
 	<h2 class="flex md:flex-row flex-col gap-1">
 		Connect with me on
 		<a
-			class="text-blue-400 h-5 md:pl-2"
+			class="text-secondary h-5 md:pl-2"
 			href="https://www.linkedin.com/in/alex-xi-9a6527214/"
 			target="”_blank”"
 		>
 			Linkedin</a
 		>
-		<a class="text-blue-400 h-5 md:pl-2" href="https://github.com/AlexXi19" target="_blank"
+		<a class="text-secondary h-5 md:pl-2" href="https://github.com/AlexXi19" target="_blank"
 			>GitHub</a
 		>
-		<a class="text-blue-400 h-5 md:pl-2" href="https://twitter.com/alex2001314" target="_blank"
+		<a class="text-secondary h-5 md:pl-2" href="https://twitter.com/alex2001314" target="_blank"
 			>Twitter</a
 		>
 	</h2>
 
-	<h1 class="font-bold text-xl mt-4">About Me</h1>
+	<h1 class="font-semibold text-xl mt-4">About Me</h1>
+    <div class="leading-relaxed">
 	<p>
 		My name is Alex Xi and I just graduated from UC Berkeley with majors in Computer Science and
-		Economics at UC Berkeley. I've had experience building fullstack applications for multiple
-		startups and data pipelines for forecasting at Amazon Alexa. My current interests are in data
-		related systems (ML/AI infra, database systems, and big data infrastructure) and large scale
-		(microservice) applications.
+		Economics at UC Berkeley. My current experience and interests are in ML Infra and Platform Engineering.
 	</p>
 	<p class="py-2">
-		In my free time, I like to browse around and learn about software engineering, here are
-		<a class="text-blue-400" href="/work">some things I'm working on</a>
+		I work on Software & Startups. Here's
+		<a class="text-secondary" href="https://notes.alexxi.dev" target="_blank">things I'm working on</a>
 		and
-		<a class="text-blue-400" href="/recs">some things that I'm reading</a>.
+		<a class="text-secondary" href="/recs">things that I'm reading</a>.
 	</p>
+    </div>
 	<div class="pt-2 font-bold h-[170px]">
 		{#if currentTrack}
 			<h2>
@@ -96,20 +98,21 @@
 
 	<br />
 	<h2 class="flex flex-col gap-[10px]">
-		<div class="flex flex-row items-center">
+		<div class="flex flex-row items-center gap-2">
 			Built with:
 			<a href="https://svelte.dev/" target="_blank">
 				<img src={svelteLogo} alt="Svelte" class="md:pb-0.5 h-5 md:pl-3" />
 			</a>
 		</div>
-		<div class="flex flex-row items-center gap-1">
+		<div class="flex flex-row items-center gap-2">
 			Hosted on:
 			<a href="https://kubernetes.io/" target="_blank">
 				<img src={kubernetesLogo} alt="Svelte" class="md:pb-0.5 h-5 md:pl-3" />
 			</a>
 			<a href="https://www.raspberrypi.com/" target="_blank">
-				<img src={raspberryLogo} alt="Vercel" class="md:pb-0.5 h-7 md:pl-3" />
+				<img src={raspberryLogo} alt="Vercel" class="md:pb-0.5 h-6 md:pl-3" />
 			</a>
 		</div>
 	</h2>
+</div>
 </div>

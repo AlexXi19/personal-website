@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { isoToDate } from '$lib/utils/random';
 	import type { Read } from '$lib/utils/recs';
-	import { paginate, LightPaginationNav } from 'svelte-paginate';
+	import { paginate, DarkPaginationNav } from 'svelte-paginate';
 	const pageSize = 15;
 
 	function populatePagination() {
@@ -19,13 +19,16 @@
 	}
 </script>
 
-<div class="font-mono text-sm max-w-4xl flex flex-col justify-between h-full">
+<div class="font-source-sans-pro text-sm max-w-4xl flex flex-col justify-between h-full text-white font-semibold">
 	<div class="">
-		<h1 class="font-bold text-lg pb-6">{header}</h1>
+    <a href="/">
+    Back 
+    </a>
+		<h1 class="font-bold text-lg pb-2 pt-4">{header}</h1>
 		<div class="flex flex-col gap-3 py-5">
 			{#each paginatedItems as rec}
-				<div class="flex flex-row gap-4 justify-between md:h-[45px] h-full">
-					<a class="text-blue-400" target="_blank" href={rec.source}>{rec.title}</a>
+				<div class="flex flex-row gap-4 justify-between md:h-[45px] h-full font-normal">
+					<a class="text-secondary" target="_blank" href={rec.source}>{rec.title}</a>
 					<div>
 						<p class="text-right">{rec.type}</p>
 						<p class="text-right">{isoToDate(rec.time)}</p>
@@ -35,7 +38,7 @@
 		</div>
 	</div>
 	<div class="h-1/2 pt-5">
-		<LightPaginationNav
+		<DarkPaginationNav
 			totalItems={recs.length}
 			{pageSize}
 			{currentPage}

@@ -1,5 +1,5 @@
 import adapter from '@sveltejs/adapter-node';
-import sveltePreprocess from 'svelte-preprocess';
+import { vitePreprocess } from '@sveltejs/kit/vite';
 import { mdsvex } from 'mdsvex';
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -9,9 +9,7 @@ const config = {
 		adapter: adapter({ out: 'build' })
 	},
 	preprocess: [
-		sveltePreprocess({
-			postcss: true
-		}),
+		vitePreprocess(),
 		mdsvex({
 			extensions: ['.md'],
 			layout: {

@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+	font-family: 'Geist';
+	src: url('/fonts/Geist-Regular.otf') format('opentype');
+	font-weight: 200;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'source-sans-pro';
+	src: url('/fonts/SourceSansPro-Regular.otf') format('opentype');
+	font-weight: 200;
+	font-style: normal;
+}
