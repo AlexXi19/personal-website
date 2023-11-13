@@ -15,3 +15,12 @@
 	font-weight: 200;
 	font-style: normal;
 }
+
+a {
+	text-decoration: none; /* Removes the default underline */
+	color: blue; /* Optional: Change the link color */
+}
+
+a:hover {
+	text-decoration: underline; /* Adds underline on hover */
+}

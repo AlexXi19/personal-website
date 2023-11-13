@@ -19,11 +19,11 @@
 	}
 </script>
 
-<div class="font-source-sans-pro text-sm max-w-4xl flex flex-col justify-between h-full text-white font-semibold">
+<div
+	class="font-source-sans-pro text-sm max-w-4xl flex flex-col justify-between h-full font-semibold"
+>
 	<div class="">
-    <a href="/">
-    Back 
-    </a>
+		<a class="text-dark-gray" href="/"> Back </a>
 		<h1 class="font-bold text-lg pb-2 pt-4">{header}</h1>
 		<div class="flex flex-col gap-3 py-5">
 			{#each paginatedItems as rec}
