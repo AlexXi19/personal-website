@@ -26,7 +26,17 @@ export const defaultContentPageLayout: PageLayout = {
     Component.MobileOnly(Component.Spacer()),
     Component.Search(),
     Component.Darkmode(),
-    Component.DesktopOnly(Component.Explorer()),
+    Component.DesktopOnly(
+      Component.Explorer({
+        folderDefaultState: "open",
+        // First "Writing" or "Blog", then others
+        sortFn: (a, b) => {
+          if (a.name.includes("Writing") || a.name.includes("Blog")) return -1
+          if (b.name.includes("Writing") || b.name.includes("Blog")) return 1
+          return 0
+        },
+      }),
+    ),
   ],
   right: [
     Component.Graph(),
