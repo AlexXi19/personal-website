@@ -25,7 +25,7 @@
 	<meta name="description" content="Alex Xi" />
 	<html lang="en" />
 </svelte:head>
-<div class="bg-black min-h-screen text-dark-gray">
+<div class="bg-black h-screen text-dark-gray">
 	<div
 		class="max-w-4xl  p-12 md:p-12 mx-auto flex flex-col gap-2 font-source-sans-pro text-sm font-semibold"
 	>
@@ -65,9 +65,8 @@
 		<h1 class="font-semibold text-xl mt-4">About Me</h1>
 		<div class="leading-relaxed">
 			<p>
-				My name is Alex Xi and I just graduated from UC Berkeley with majors in Computer Science and
-				Economics at UC Berkeley. My current experience and interests are in ML Infra and Platform
-				Engineering.
+				My name is Alex Xi and I just graduated with majors in Computer Science and Economics at UC
+				Berkeley. My current experience and interests are in ML Infra and Platform Engineering.
 			</p>
 			<p class="py-2">
 				I work on Software & Startups. Here's
