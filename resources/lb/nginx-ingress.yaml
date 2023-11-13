@@ -3,6 +3,10 @@ kind: Ingress
 metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/server-snippet: |
+      location ~* ^/cal$ {
+        return 301 https://cal.com/alexxi/30min;
+      }
   name: nginx-ingress
 spec:
   ingressClassName: nginx
