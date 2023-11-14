@@ -25,9 +25,9 @@
 	<meta name="description" content="Alex Xi" />
 	<html lang="en" />
 </svelte:head>
-<div class="bg-black h-screen text-dark-gray">
+<div class="bg-black min-h-screen text-dark-gray">
 	<div
-		class="max-w-4xl  p-12 md:p-12 mx-auto flex flex-col gap-2 font-source-sans-pro text-sm font-semibold"
+		class="max-w-4xl p-8 md:p-12 mx-auto flex flex-col gap-2 font-source-sans-pro text-sm font-semibold"
 	>
 		<h1 class="text-xl">Alex Xi</h1>
 		<h2>
@@ -43,7 +43,7 @@
 			days.
 		</h2>
 
-		<img src={myPhoto} alt="Me" class="mt-2 w-60 rounded-md shadow-lg" />
+		<img src={myPhoto} alt="Me" class="mt-2 w-32 md:w-60 rounded-md shadow-lg" />
 
 		<h2 class="flex md:flex-row flex-col gap-1">
 			Connect with me on
