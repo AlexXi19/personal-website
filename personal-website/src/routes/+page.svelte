@@ -27,9 +27,9 @@
 </svelte:head>
 <div class="bg-black min-h-screen text-dark-gray">
 	<div
-		class="max-w-4xl p-8 md:p-12 mx-auto flex flex-col gap-2 font-source-sans-pro text-sm font-semibold"
+		class="max-w-4xl p-8 pt-10 md:p-12 md:pt-40 mx-auto flex flex-col gap-2 font-source-sans-pro text-sm font-semibold"
 	>
-		<h1 class="text-xl">Alex Xi</h1>
+		<h1 class="text-2xl">Alex Xi</h1>
 		<h2>
 			Welcome to my <a
 				class="text-secondary"
@@ -58,7 +58,7 @@
 				>GitHub</a
 			>
 			<a class="text-secondary h-5 md:pl-2" href="https://twitter.com/alex2001314" target="_blank"
-				>Twitter</a
+				>X (Twitter)</a
 			>
 		</h2>
 
