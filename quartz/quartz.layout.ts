@@ -7,8 +7,6 @@ export const sharedPageComponents: SharedLayout = {
   header: [],
   footer: Component.Footer({
     links: {
-      GitHub: "https://github.com/jackyzha0/quartz",
-      "Discord Community": "https://discord.gg/cRFFHYye7t",
     },
   }),
 }
@@ -42,7 +40,7 @@ export const defaultContentPageLayout: PageLayout = {
     Component.DesktopOnly(Component.Backlinks()),
     Component.MobileOnly(
       Component.Explorer({
-        folderDefaultState: "open",
+        folderDefaultState: "collapsed",
         // First "Writing" or "Blog", then others
         sortFn: (a, b) => {
           if (a.name.includes("Writing") || a.name.includes("Blog")) return -1
