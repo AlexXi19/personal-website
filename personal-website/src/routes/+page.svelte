@@ -27,7 +27,7 @@
 </svelte:head>
 <div class="bg-black min-h-screen text-dark-gray">
 	<div
-		class="max-w-4xl p-8 pt-10 md:p-12 md:pt-40 mx-auto flex flex-col gap-2 font-source-sans-pro text-sm font-semibold"
+		class="max-w-4xl pt-28 px-8 md:px-12 mx-auto flex flex-col gap-2 font-source-sans-pro text-sm font-semibold"
 	>
 		<h1 class="text-2xl">Alex Xi</h1>
 		<h2>
