@@ -1,0 +1,57 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  finalizers:
+  - strrl.dev/cloudflare-tunnel-ingress-controller-controlled
+  name: cloudflare-ingress
+  namespace: default
+spec:
+  ingressClassName: cloudflare-tunnel
+  rules:
+  - host: alexxi.dev
+    http:
+      paths:
+      - backend:
+          service:
+            name: personal-website
+            port:
+              number: 3000
+        path: /
+        pathType: Prefix
+  - host: www.alexxi.dev
+    http:
+      paths:
+      - backend:
+          service:
+            name: personal-website
+            port:
+              number: 3000
+        path: /
+        pathType: Prefix
+  - host: share.alexxi.dev
+    http:
+      paths:
+      - backend:
+          service:
+            name: code-share
+            port:
+              number: 8000
+        path: /
+        pathType: Prefix
+  - host: notes.alexxi.dev
+    http:
+      paths:
+      - backend:
+          service:
+            name: notes-app-service
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+status:
+  loadBalancer:
+    ingress:
+    - hostname: 1425ff4b-7166-4fc9-a712-5f790da4ba1e.cfargotunnel.com
+      ports:
+      - port: 443
+        protocol: TCP
