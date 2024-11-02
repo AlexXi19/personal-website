@@ -2,7 +2,6 @@
 	import svelteLogo from '$lib/assets/svelte-logo.svg';
 	import kubernetesLogo from '$lib/assets/kubernetes-logo.svg';
 	import raspberryLogo from '$lib/assets/raspberry-logo.svg';
-	import myPhoto from '$lib/assets/my-photo.jpeg';
 	import { daysSinceWebsiteStart } from '$lib/utils/random';
 	import SpotifyEmbed from '$lib/components/SpotifyEmbed.svelte';
 	import { onMount } from 'svelte';
@@ -17,6 +16,7 @@
 	});
 
 	let daysSinceStart = daysSinceWebsiteStart();
+	let isHovered = false; // State to track hover
 </script>
 
 <svelte:head>
@@ -25,9 +25,9 @@
 	<meta name="description" content="Alex Xi" />
 	<html lang="en" />
 </svelte:head>
-<div class="bg-black min-h-screen text-dark-gray">
+<div class="min-h-screen text-dark-gray">
 	<div
-		class="max-w-4xl pt-28 px-8 md:px-12 mx-auto flex flex-col gap-2 font-source-sans-pro text-sm font-semibold"
+		class="max-w-4xl pt-20 px-8 md:px-12 mx-auto flex flex-col gap-2 font-source-sans-pro text-sm font-semibold"
 	>
 		<h1 class="text-2xl">Alex Xi</h1>
 		<h2>
@@ -43,7 +43,29 @@
 			days.
 		</h2>
 
-		<img src={myPhoto} alt="Me" class="mt-2 w-32 md:w-60 rounded-md shadow-lg" />
+		<div
+			class="relative w-52 h-52 overflow-hidden rounded-sm"
+			on:mouseenter={() => (isHovered = true)}
+			on:mouseleave={() => (isHovered = false)}
+		>
+			<!-- Default Image -->
+			<img
+				src="https://image.alexxi.dev/WechatIMG54005.jpg"
+				alt=""
+				class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-in-out"
+				class:opacity-100={!isHovered}
+				class:opacity-0={isHovered}
+			/>
+
+			<!-- Hover Image -->
+			<img
+				src="https://image.alexxi.dev/WechatIMG54006.jpg"
+				alt=""
+				class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-in-out"
+				class:opacity-0={!isHovered}
+				class:opacity-100={isHovered}
+			/>
+		</div>
 
 		<h2 class="flex md:flex-row flex-col gap-1">
 			Connect with me on
@@ -64,10 +86,6 @@
 
 		<h1 class="font-semibold text-xl mt-4">About Me</h1>
 		<div class="leading-relaxed">
-			<p>
-				My name is Alex Xi and I just graduated with majors in Computer Science and Economics at UC
-				Berkeley. My current experience and interests are in ML Infra and Platform Engineering.
-			</p>
 			<p class="py-2">
 				I work on Software & Startups. Here's
 				<a class="text-secondary" href="https://notes.alexxi.dev" target="_blank"
