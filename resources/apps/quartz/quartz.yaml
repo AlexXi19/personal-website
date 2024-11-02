@@ -16,6 +16,42 @@ spec:
       volumes:
       - name: content-volume
         emptyDir: {}
+      initContainers:
+      - name: git-repo-cloner
+        image: alpine/git
+        volumeMounts:
+        - name: content-volume
+          mountPath: /usr/src/app/content
+        env:
+        - name: GIT_SYNC_REPO
+          value: https://github.com/alexxi19/notes.git
+        - name: GIT_SYNC_DEST
+          value: /usr/src/app/content
+        - name: GIT_SYNC_BRANCH
+          value: main
+        - name: GIT_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: git-creds
+              key: username
+        - name: GIT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: git-creds
+              key: password
+        command: ['/bin/sh']
+        args:
+        - '-c'
+        - |
+          set -e
+          git config --global credential.helper store
+          git credential approve <<EOF
+          protocol=https
+          host=github.com
+          username=$GIT_USERNAME
+          password=$GIT_PASSWORD
+          EOF
+          git clone --branch "$GIT_SYNC_BRANCH" "$GIT_SYNC_REPO" "$GIT_SYNC_DEST"
       containers:
       - name: quartz
         image: alexxi19/quartz:latest
