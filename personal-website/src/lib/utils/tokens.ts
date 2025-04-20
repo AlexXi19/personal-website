@@ -13,5 +13,10 @@ export async function getToken() {
 		.select('*')
 		.order('created_at', { ascending: false })
 		.limit(1);
-	return data?.[0]!;
+
+	const res = data?.[0];
+	if (!res) {
+		throw new Error('No token found');
+	}
+	return res;
 }

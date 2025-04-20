@@ -1,5 +1,5 @@
 import { spotifyApi } from '$lib/spotify';
-import { upsertToken } from '$lib/utils/tokens';
+import { getToken, upsertToken } from '$lib/utils/tokens';
 
 /** @type {import('./$types').RequestHandler} */
 export async function GET() {
